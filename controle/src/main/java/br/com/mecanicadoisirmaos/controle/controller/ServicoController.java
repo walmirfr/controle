@@ -15,6 +15,8 @@ public class ServicoController {
 
 	@Autowired
 	private ServicoBusiness servicoDao;
+	private String ativo;
+	
 	
 	private ServicoVo servicoVo = new ServicoVo();
 
