@@ -7,15 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
-import br.com.mecanicadoisirmaos.controle.dao.ServicoDao;
 import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 @Controller
 public class ServicoController {
 
-	//private ServicoDaoImpl servicoDao = new ServicoDaoImpl();
-	
 	@Autowired
 	private ServicoBusiness servicoDao;
 	
