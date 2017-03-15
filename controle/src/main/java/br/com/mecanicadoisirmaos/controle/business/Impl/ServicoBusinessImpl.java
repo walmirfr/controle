@@ -1,5 +1,7 @@
 package br.com.mecanicadoisirmaos.controle.business.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +22,14 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 			return true;
 		}
 		return false;
+	}
+
+	public List<ServicoVo> listarServicos() {
+		return servicoDao.listarServicos();
+	}
+
+	public void deletarServico(ServicoVo servico) {
+		servicoDao.deletarServicoPorId(servico.getIdServico());
 	}
 
 }

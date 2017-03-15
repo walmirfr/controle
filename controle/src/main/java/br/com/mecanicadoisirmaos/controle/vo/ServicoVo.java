@@ -5,6 +5,8 @@ package br.com.mecanicadoisirmaos.controle.vo;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 /**
  * @author walmi
  *
@@ -12,6 +14,8 @@ import java.util.List;
 public class ServicoVo {
 
 	private Integer idServico;
+	@NotNull(message="servico.nome.obrigatorio")
+	@Size(max=50)
 	private String nome;
 	private Integer tempoEstivamo;
 	private String descricao;

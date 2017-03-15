@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +87,7 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-
+		
         <div id="page-wrapper">
 			<form action="inserirServico" method="post">
             <div class="container-fluid">
@@ -106,6 +108,7 @@
 					</div>
 					<div class="col-lg-12">
 						<div class="form-group row">
+							<form:errors path="servicoVo.nome" />
 							<label for="example-text-input" class="col-xs-1 col-form-label">Nome</label>
 							<div class="col-xs-7">
 								<input class="form-control" type="text" name="nome" placeholder="Nome"/>

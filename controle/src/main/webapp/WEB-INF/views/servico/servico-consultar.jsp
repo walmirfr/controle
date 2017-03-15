@@ -15,13 +15,13 @@
     <title>Controle de manutenções</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="<c:url value="/static/css/comum/bootstrap.min.css" />" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
+	<link href="<c:url value="/static/css/comum/sb-admin.css" />" rel="stylesheet">
+	
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/static/font-awesome/css/font-awesome.min.css" />" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,7 +104,7 @@
 							</h1>
 						</div>
 						<div class="col-lg-1" style="top: 50px; right: 25px;">
-							<a href="servico-cadastrar.html" class="btn btn-primary">Cadastrar</a>
+							<a href="servicoCadastrar" class="btn btn-primary">Cadastrar</a>
 						</div>
 						
                     </div>
@@ -139,24 +139,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td style="text-align: center;"><a href="#"> Amortecedor Dianteiro Esquerdo</a></td>
-                                        <td style="text-align: center;">Suspensão</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td style="text-align: center;"><a href="#"> Amortecedor Dianteiro Esquerdo</a></td>
-                                        <td style="text-align: center;">Suspensão</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td style="text-align: center;"><a href="#"> Amortecedor Dianteiro Esquerdo</a></td>
-                                        <td style="text-align: center;">Suspensão</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
+                                	<c:forEach items="${listaServicos}" var="servico">
+	                                    <tr>
+	                                        <td style="text-align: center;"><a href="#">${servico.nome }</a></td>
+	                                        <td style="text-align: center;">${servico.grupoServico.nome }</td>
+											<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
+											<td style="text-align: center;"><a href="deletarServico?idServico=${servico.idServico}" class="btn btn-danger"><i class="fa fa-remove"><c:if test="${servico.ativo eq true}">Ativo</c:if></i></a></td>
+	                                    </tr>
+                                	</c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -173,10 +163,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+	<script src="<c:url value="/static/js/comum/jquery.js" />" type="text/javascript"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<c:url value="/static/js/comum/bootstrap.min.js" />" type="text/javascript"></script>
 
 </body>
 

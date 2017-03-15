@@ -1,14 +1,19 @@
 package br.com.mecanicadoisirmaos.controle.util;
 
-import static br.com.mecanicadoisirmaos.controle.util.Constantes.NAO;
-import static br.com.mecanicadoisirmaos.controle.util.Constantes.SIM;
-
 public class Util {
 
 	public static String getAtivo(Boolean ativo){
-		String valor = NAO;
+		String valor = Constants.NAO;
 		if(ativo){
-			valor = SIM;
+			valor = Constants.SIM;
+		}
+		return valor;
+	}
+	
+	public static Boolean getAtivo(String ativo){
+		Boolean valor = false;
+		if("S".equalsIgnoreCase(ativo)){
+			valor = true;
 		}
 		return valor;
 	}

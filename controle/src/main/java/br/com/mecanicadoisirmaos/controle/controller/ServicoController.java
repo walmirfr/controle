@@ -1,24 +1,22 @@
 package br.com.mecanicadoisirmaos.controle.controller;
 
 import javax.naming.NamingException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
-import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 @Controller
 public class ServicoController {
 
 	@Autowired
-	private ServicoBusiness servicoDao;
-	private String ativo;
-	
-	
-	private ServicoVo servicoVo = new ServicoVo();
+	private ServicoBusiness servicoBusiness;
 
 	@RequestMapping("/servicoCadastrar")
 	public String cadastrarServico(){
@@ -26,9 +24,12 @@ public class ServicoController {
 	}
 	
 	@RequestMapping("/inserirServico")
-	public String inserirServico(ServicoVo servico){
-		servicoDao.inserirServico(servico);
-		return "infra-ok";
+	public String inserirServico(@Valid ServicoVo servico, BindingResult result){
+		if(result.hasErrors()){
+			return "servico/servico-cadastro";
+		}
+		servicoBusiness.inserirServico(servico);
+		return "servico/servico-consultar";
 	}
 	
 	@RequestMapping("/cadastrarInfra")
@@ -37,14 +38,17 @@ public class ServicoController {
 		return "infra-ok";
 	}
 	
-	public void popularServico(){
-		servicoVo.setAtivo(true);
-		servicoVo.setNome("Bucha");
-		servicoVo.setDescricao("Balança");
-		servicoVo.setTempoEstivamo(3);
-		GrupoServicoVo grupo = new GrupoServicoVo();
-		grupo.setIdGrupoServico(1);
-		servicoVo.setGrupoServico(grupo);
+	@RequestMapping("/listarServicos")
+	public ModelAndView listarServicos(){
+		ModelAndView mv = new ModelAndView("servico/servico-consultar");
+		mv.addObject("listaServicos", servicoBusiness.listarServicos());
+		return mv;
+	}
+	
+	@RequestMapping("/deletarServico")
+	public String deletarServico(ServicoVo servico){
+		servicoBusiness.deletarServico(servico);
+		return "redirect:listarServicos";
 	}
 	
 	@RequestMapping("/infra")

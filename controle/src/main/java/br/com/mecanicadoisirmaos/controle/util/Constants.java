@@ -1,6 +1,6 @@
 package br.com.mecanicadoisirmaos.controle.util;
 
-public class Constantes {
+public class Constants {
 
 	public static final String SIM = "S";
 	public static final String NAO = "N";
