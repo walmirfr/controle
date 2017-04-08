@@ -14,10 +14,13 @@ import javax.validation.constraints.Size;
 public class ServicoVo {
 
 	private Integer idServico;
+	
 	@NotNull(message="servico.nome.obrigatorio")
-	@Size(max=50)
 	private String nome;
+	
 	private Integer tempoEstivamo;
+	
+	@Size(min=5)
 	private String descricao;
 	private Boolean ativo;
 	private Double preco;

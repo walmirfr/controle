@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- PADRÃO PARA TODOS -->
+	<definition name="comum" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+	</definition>
+	
+	<!-- SERVIÇO -->
+	<definition name="servico/servico-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Serviço"/>
+		<put-attribute name="main" value="/WEB-INF/views/servico/servico-manter.jsp" />
+	</definition>
+	<definition name="servico/servico-consultar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Serviço"/>
+		<put-attribute name="main" value="/WEB-INF/views/servico/servico-consultar.jsp" />
+	</definition>
+</tiles-definitions>

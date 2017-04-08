@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
 						http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
@@ -15,24 +13,22 @@
 					    http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
 					    http://www.springframework.org/schema/tx
 					    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-						
 
-	<context:component-scan base-package="br.com.mecanicadoisirmaos.controle" />
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-	<mvc:resources mapping="/static/**" location="/static/"/>
-	
+	<mvc:resources mapping="/static/**" location="/static/" />
+	<context:annotation-config />
 	<mvc:annotation-driven />
+	<context:component-scan base-package="br.com.mecanicadoisirmaos.controle" />
 	
-	<!-- INICIO :: BANCO DE DADOS E TRANSACOES 
-	<jee:jndi-lookup id="gestor_oficina" jndi-name="java:/comp/env/jdbc/gestor_oficina" expected-type="javax.sql.DataSource"/>
+	<!-- CONFIGURAÇÃO DO TEMPLATE -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/views/layout/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
 	
-	<bean id="servicoDaoImpl" class="br.com.mecanicadoisirmaos.controle.dao.impl.ServicoDaoImpl">
-        <property name="dataSource" ref="gestor_oficina"/>
-    </bean>
-	
-	 FIM :: BANCO DE DADOS E TRANSACOES -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    	<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	</bean>
 </beans>

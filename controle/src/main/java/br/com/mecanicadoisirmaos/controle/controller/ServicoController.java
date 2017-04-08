@@ -1,8 +1,10 @@
 package br.com.mecanicadoisirmaos.controle.controller;
 
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,14 +17,25 @@ import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 @Controller
 public class ServicoController {
 
+	private final static Logger LOGGER = Logger.getLogger(ServicoController.class);
+	
 	@Autowired
 	private ServicoBusiness servicoBusiness;
 
-	@RequestMapping("/servicoCadastrar")
-	public String cadastrarServico(){
-		return "servico/servico-cadastro";
+	/*LINKS*/
+	@RequestMapping("/servico/cadastrar")
+	public ModelAndView cadastrarServico(){
+		return getRetorno("servico/servico-cadastrar");
 	}
 	
+	@RequestMapping("/servico/consultar")
+	public ModelAndView listarServicos(){
+		ModelAndView mv = getRetorno("servico/servico-consultar");
+		mv.addObject("listaServicos", servicoBusiness.listarServicos());
+		return mv;
+	}
+	
+	/*AÇÕES*/
 	@RequestMapping("/inserirServico")
 	public String inserirServico(@Valid ServicoVo servico, BindingResult result){
 		if(result.hasErrors()){
@@ -32,27 +45,17 @@ public class ServicoController {
 		return "servico/servico-consultar";
 	}
 	
-	@RequestMapping("/cadastrarInfra")
-	public String cadastrarInfra(ServicoVo servico){
-		System.out.println(servico.getNome());
-		return "infra-ok";
+	@RequestMapping("/deletarServico")
+	public void deletarServico(ServicoVo servico, HttpServletResponse response){
+		servicoBusiness.deletarServico(servico);
+		
+		response.setStatus(200);
 	}
 	
-	@RequestMapping("/listarServicos")
-	public ModelAndView listarServicos(){
-		ModelAndView mv = new ModelAndView("servico/servico-consultar");
-		mv.addObject("listaServicos", servicoBusiness.listarServicos());
+	private ModelAndView getRetorno(String pagRetorno){
+		ModelAndView mv = new ModelAndView(pagRetorno);
+		mv.addObject("pagina", "servico");
 		return mv;
 	}
 	
-	@RequestMapping("/deletarServico")
-	public String deletarServico(ServicoVo servico){
-		servicoBusiness.deletarServico(servico);
-		return "redirect:listarServicos";
-	}
-	
-	@RequestMapping("/infra")
-	public String infraok() throws NamingException{
-		return "infra-ok";
-	}	
 }
