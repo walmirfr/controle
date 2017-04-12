@@ -13,7 +13,67 @@
 		<put-attribute name="main" value="/WEB-INF/views/servico/servico-manter.jsp" />
 	</definition>
 	<definition name="servico/servico-consultar" extends="comum">
-		<put-attribute name="title" value="Cadastro de Serviço"/>
+		<put-attribute name="title" value="Consulta de Serviço"/>
 		<put-attribute name="main" value="/WEB-INF/views/servico/servico-consultar.jsp" />
+	</definition>
+	
+	<!-- CLIENTE -->
+	<definition name="cliente/cliente-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Cliente"/>
+		<put-attribute name="main" value="/WEB-INF/views/cliente/cliente-manter.jsp" />
+	</definition>
+	<definition name="cliente/cliente-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta de Cliente"/>
+		<put-attribute name="main" value="/WEB-INF/views/cliente/cliente-consultar.jsp" />
+	</definition>
+	
+	<!-- EMPRESA -->
+	<definition name="empresa/empresa-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Empresa"/>
+		<put-attribute name="main" value="/WEB-INF/views/empresa/empresa-manter.jsp" />
+	</definition>
+	<definition name="empresa/empresa-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta de Empresa"/>
+		<put-attribute name="main" value="/WEB-INF/views/empresa/empresa-consultar.jsp" />
+	</definition>
+	
+	<!-- MANUTENCAO -->
+	<definition name="manutencao/manutencao-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Manutenção"/>
+		<put-attribute name="main" value="/WEB-INF/views/manutencao/manutencao-manter.jsp" />
+	</definition>
+	<definition name="manutencao/manutencao-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta de Manutenção"/>
+		<put-attribute name="main" value="/WEB-INF/views/manutencao/manutencao-consultar.jsp" />
+	</definition>
+	
+	<!-- PRINCIPAL -->
+	<definition name="home/index" extends="comum">
+		<put-attribute name="title" value="Página Principal"/>
+		<put-attribute name="main" value="/WEB-INF/views/home/index.jsp" />
+	</definition>
+	<definition name="principal/principal-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta Principal"/>
+		<put-attribute name="main" value="/WEB-INF/views/principal/principal-consultar.jsp" />
+	</definition>
+	
+	<!-- PROFISSIONAL -->
+	<definition name="profissional/profissional-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Profissional"/>
+		<put-attribute name="main" value="/WEB-INF/views/profissional/profissional-manter.jsp" />
+	</definition>
+	<definition name="profissional/profissional-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta Profissional"/>
+		<put-attribute name="main" value="/WEB-INF/views/profissional/profissional-consultar.jsp" />
+	</definition>
+	
+	<!-- VEICULO -->
+	<definition name="veiculo/veiculo-cadastrar" extends="comum">
+		<put-attribute name="title" value="Cadastro de Veiculo"/>
+		<put-attribute name="main" value="/WEB-INF/views/veiculo/veiculo-manter.jsp" />
+	</definition>
+	<definition name="veiculo/veiculo-consultar" extends="comum">
+		<put-attribute name="title" value="Consulta de Veiculo"/>
+		<put-attribute name="main" value="/WEB-INF/views/veiculo/veiculo-consultar.jsp" />
 	</definition>
 </tiles-definitions>

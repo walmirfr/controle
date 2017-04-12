@@ -38,7 +38,7 @@
                <c:if test="${pagina != 'principal'}">
                		<li>
                </c:if>
-                   <a href="index.html"><i class="fa fa-fw fa-home"></i> Principal</a>
+                   <a href="home/index"><i class="fa fa-fw fa-home"></i> Principal</a>
                </li>
 				<c:if test="${pagina == 'cliente'}">
                		<li class="active">
@@ -46,7 +46,7 @@
                <c:if test="${pagina != 'cliente'}">
                		<li>
                </c:if>
-                   <a href="cliente-consultar.html"><i class="fa fa-fw fa-user"></i> Cliente <span class="icon-tipo-down"></span></a>
+                   <a href="cliente/cliente-consultar"><i class="fa fa-fw fa-user"></i> Cliente <span class="icon-tipo-down"></span></a>
                </li>
 				<c:if test="${pagina == 'empresa'}">
                		<li class="active">
@@ -54,7 +54,7 @@
                <c:if test="${pagina != 'empresa'}">
                		<li>
                </c:if>
-                   <a href="empresa-consultar.html"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Empresa</a>
+                   <a href="empresa/empresa-consultar"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Empresa</a>
                </li>
 				<c:if test="${pagina == 'veiculo'}">
                		<li class="active">
@@ -62,7 +62,7 @@
                <c:if test="${pagina != 'veiculo'}">
                		<li>
                </c:if>
-                   <a href="veiculo-consultar.html"><i class="fa fa-fw fa-car"></i> Veículos</a>
+                   <a href="veiculo/veiculo-consultar"><i class="fa fa-fw fa-car"></i> Veículos</a>
                </li>
                <c:if test="${pagina == 'manutencao'}">
                		<li class="active">
@@ -70,7 +70,7 @@
                <c:if test="${pagina != 'manutencao'}">
                		<li>
                </c:if>
-                   <a href="manutencao-consultar.html"><i class="fa fa-fw fa-wrench"></i> Manutenção</a>
+                   <a href="manutencao/manutencao-consultar"><i class="fa fa-fw fa-wrench"></i> Manutenção</a>
                </li>
                <c:if test="${pagina == 'servico'}">
                		<li class="active">
@@ -78,7 +78,7 @@
                <c:if test="${pagina != 'servico'}">
                		<li>
                </c:if>
-                   <a href="servico-consultar.html"><i class="fa fa-fw fa-gears"></i> Serviço</a>
+                   <a href="servico/servico-consultar"><i class="fa fa-fw fa-gears"></i> Serviço</a>
                </li>
 				<c:if test="${pagina == 'profissional'}">
                		<li class="active">
@@ -86,7 +86,7 @@
                <c:if test="${pagina != 'profissional'}">
                		<li>
                </c:if>
-                   <a href="profissional-consultar.html"><i class="fa fa-fw fa-desktop"></i> Profissional</a>
+                   <a href="profissional/profissional-consultar"><i class="fa fa-fw fa-desktop"></i> Profissional</a>
                </li>
            </ul>
        </div>

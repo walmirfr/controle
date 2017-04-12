@@ -1,6 +1,5 @@
 package br.com.mecanicadoisirmaos.controle.controller;
 
-import javax.naming.NamingException;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -49,6 +48,12 @@ public class ServicoController {
 	public void deletarServico(ServicoVo servico, HttpServletResponse response){
 		servicoBusiness.deletarServico(servico);
 		
+		response.setStatus(200);
+	}
+	
+	@RequestMapping("/inserirGrupoServico")
+	public void inserirGrupoServico(ServicoVo servico, HttpServletResponse response){
+		servicoBusiness.inserirServico(servico);
 		response.setStatus(200);
 	}
 	
