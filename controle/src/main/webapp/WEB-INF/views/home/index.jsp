@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            MecÃ¢nica Dois IrmÃ£os
+                            Mecânica Dois Irmãos
                         </h1>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
 										</div>
 										<div class="col-xs-9 text-right">
 											<div class="huge">26</div>
-											<div>Ultimas ManutenÃ§Ãµes</div>
+											<div>Ultimas Manutenções</div>
 										</div>
 									</div>
 								</div>
@@ -70,7 +70,7 @@
 										</div>
 										<div class="col-xs-9 text-right">
 											<div class="huge">124</div>
-											<div>VeÃ­culos</div>
+											<div>Veículos</div>
 										</div>
 									</div>
 								</div>
@@ -92,7 +92,7 @@
 										</div>
 										<div class="col-xs-9 text-right">
 											<div class="huge">13</div>
-											<div>ServiÃ§os</div>
+											<div>Serviços</div>
 										</div>
 									</div>
 								</div>
@@ -111,7 +111,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Resumo de ManutenÃ§Ãµes</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Resumo de Manutenções</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-area-chart"></div>
@@ -125,7 +125,7 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> ManutenÃ§Ãµes</h3>
+                                <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Manutenções</h3>
                             </div>
                             <div class="panel-body">
                                 <div id="morris-donut-chart"></div>
@@ -138,7 +138,7 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Resumo ManutenÃ§Ãµes</h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Resumo Manutenções</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">

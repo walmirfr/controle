@@ -14,7 +14,7 @@
 							</h1>
 						</div>
 						<div class="col-lg-1" style="top: 50px; right: 25px;">
-							<a href="cliente-cadastrar.html" class="btn btn-primary">Cadastrar</a>
+							<a href="../cliente/cadastrar" class="btn btn-primary">Cadastrar</a>
 						</div>
 						
                     </div>

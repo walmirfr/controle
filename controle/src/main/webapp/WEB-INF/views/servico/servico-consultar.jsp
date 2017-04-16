@@ -46,7 +46,7 @@
                                         <th style="text-align: center;">Nome</th>
                                         <th style="text-align: center;">Grupo</th>
 										<th style="text-align: center;">Alterar</th>
-										<th style="text-align: center;">Excluir</th>
+										<th style="text-align: center;">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,7 +55,13 @@
 	                                        <td style="text-align: center;"><a href="#">${servico.nome }</a></td>
 	                                        <td style="text-align: center;">${servico.grupoServico.nome }</td>
 											<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-											<td style="text-align: center;"><a href="" onclick="deletarServico(${servico.idServico})" class="btn btn-danger"><i class="fa fa-remove"><c:if test="${servico.ativo eq true}">Ativo</c:if></i></a></td>
+											<td style="text-align: center;">
+												<a href="" onclick="deletarServico(${servico.idServico})" class="btn btn-danger">
+													<i class="fa">
+														<c:if test="${servico.ativo eq true}">Excluir</c:if>
+													</i>
+												</a>
+											</td>
 	                                    </tr>
                                 	</c:forEach>
                                 </tbody>
@@ -69,3 +75,5 @@
 
         </div>
         <!-- /#page-wrapper -->
+
+        <script src="<c:url value="/static/js/servico/servico-consultar.js" />" type="text/javascript"></script>

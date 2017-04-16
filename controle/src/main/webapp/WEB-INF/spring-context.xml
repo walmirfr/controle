@@ -17,6 +17,7 @@
 	<mvc:resources mapping="/static/**" location="/static/" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
 	<context:component-scan base-package="br.com.mecanicadoisirmaos.controle" />
 	
 	<!-- CONFIGURAÇÃO DO TEMPLATE -->

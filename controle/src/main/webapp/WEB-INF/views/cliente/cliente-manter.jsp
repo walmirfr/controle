@@ -113,7 +113,7 @@
 							</div>
 						</div>
 						<div class="form-group text-right">
-							<a href="cliente-consultar.html" class="btn btn-default" name="cancelar" type="button">Cancelar</a>
+							<a href="../cliente/consultar" class="btn btn-default" name="cancelar" type="button">Cancelar</a>
 							<input class="btn btn-default" name="limpar" type="button" value="Limpar"/>
 							<input class="btn btn-primary" name="cadastrar" type="button" value="Cadastrar"/>
 						</div>

@@ -28,6 +28,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+	<!-- jQuery -->
+	<script src="<c:url value="/static/js/comum/jquery.js" />"
+		type="text/javascript"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -35,9 +38,6 @@
 		<tiles:insertAttribute name="main" />
 	</div>
 	<!-- /#wrapper -->
-	<!-- jQuery -->
-	<script src="<c:url value="/static/js/comum/jquery.js" />"
-		type="text/javascript"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<c:url value="/static/js/comum/bootstrap.min.js" />"

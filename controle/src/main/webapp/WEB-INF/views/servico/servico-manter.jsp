@@ -62,32 +62,6 @@
 						<input class="btn btn-default" name="limpar" type="button" value="Limpar"/>
 						<input class="btn btn-primary" name="cadastrar" type="submit" value="Cadastrar"/>
 					</div>
-					<!--Modal Adicionar grupo-->
-					<div class="modal fade" id="modalGrupoServico" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-						<div class="modal-content">
-						  <div class="modal-header">
-							<h4 class="modal-title" id="exampleModalLabel">Adicionar Grupo de Serviço
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								  <span aria-hidden="true">&times;</span>
-								</button>
-							</h4>
-						  </div>
-						  <div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label for="recipient-name" class="control-label">Nome do Grupo</label>
-									<input class="form-control" type="text" name="nome" placeholder="Nome do Grupo Serviço"/>
-								</div>
-							</form>
-						  </div>
-						  <div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-							<button type="button" class="btn btn-primary">Salvar Grupo</button>
-						  </div>
-						</div>
-					  </div>
-					</div>
 				</div>
 			</div>
 	<!-- /.row -->
@@ -96,3 +70,30 @@
 	</form>
 </div>
 <!-- /#page-wrapper -->
+
+<!--Modal Adicionar grupo-->
+<div class="modal fade" id="modalGrupoServico" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h4 class="modal-title" id="exampleModalLabel">Adicionar Grupo de Serviço
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h4>
+	  </div>
+	  <div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label for="recipient-name" class="control-label">Nome do Grupo</label>
+				<input class="form-control" type="text" name="nome" placeholder="Nome do Grupo Serviço"/>
+			</div>
+		</form>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+		<button type="button" class="btn btn-primary">Salvar Grupo</button>
+	  </div>
+	</div>
+  </div>
+</div>

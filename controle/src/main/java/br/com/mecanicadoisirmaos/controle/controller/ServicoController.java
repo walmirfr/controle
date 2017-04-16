@@ -35,16 +35,16 @@ public class ServicoController {
 	}
 	
 	/*AÇÕES*/
-	@RequestMapping("/inserirServico")
-	public String inserirServico(@Valid ServicoVo servico, BindingResult result){
+	@RequestMapping("/servico/inserirServico")
+	public ModelAndView inserirServico(@Valid ServicoVo servico, BindingResult result){
 		if(result.hasErrors()){
-			return "servico/servico-cadastro";
+			return cadastrarServico();
 		}
 		servicoBusiness.inserirServico(servico);
-		return "servico/servico-consultar";
+		return listarServicos();
 	}
 	
-	@RequestMapping("/deletarServico")
+	@RequestMapping("/servico/deletarServico")
 	public void deletarServico(ServicoVo servico, HttpServletResponse response){
 		servicoBusiness.deletarServico(servico);
 		
