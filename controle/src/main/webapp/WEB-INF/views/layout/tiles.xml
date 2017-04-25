@@ -16,6 +16,10 @@
 		<put-attribute name="title" value="Consulta de Serviço"/>
 		<put-attribute name="main" value="/WEB-INF/views/servico/servico-consultar.jsp" />
 	</definition>
+	<definition name="servico/servico-alterar" extends="comum">
+		<put-attribute name="title" value="Alteração de Serviço"/>
+		<put-attribute name="main" value="/WEB-INF/views/servico/servico-manter.jsp" />
+	</definition>
 	
 	<!-- CLIENTE -->
 	<definition name="cliente/cliente-cadastrar" extends="comum">

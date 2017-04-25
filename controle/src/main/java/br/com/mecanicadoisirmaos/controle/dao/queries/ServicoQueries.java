@@ -40,7 +40,6 @@ public interface ServicoQueries {
 			.append("NOME_SERVICO = :nome ")
 			.append("DESCRICAO = :descricao ")
 			.append("TEMPO_ESTIMADO = :tempoEstimado ")
-			.append("ATIVO = :ativo ")
 			.append("ID_GRUPO_SERVICO = :idGrupoServico ")
 			.append("WHERE ID_SERVICO = :idServico ")
 			.toString();

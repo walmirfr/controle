@@ -8,7 +8,11 @@ public interface ServicoBusiness {
 
 	public Boolean inserirServico(ServicoVo servico);
 	
+	public Boolean alterarServico(ServicoVo servico);
+	
 	public List<ServicoVo> listarServicos();
 
 	public void deletarServico(ServicoVo servico);
+	
+	public ServicoVo consultarServicoPorId(Integer idServico);
 }

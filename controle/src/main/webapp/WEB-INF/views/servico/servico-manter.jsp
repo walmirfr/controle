@@ -4,9 +4,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div id="page-wrapper">
-	<form action="inserirServico" method="post">
+	<c:if test="${funcao == 'Cadastrar'}">
+		<form action="inserirServico" method="post">
+	</c:if>
+	<c:if test="${funcao == 'Alterar'}">
+		<form action="alterarServico" method="post">
+	</c:if>
 	   <div class="container-fluid">
-	
+		<input type="hidden" name="idServico" value="${servicoVo.idServico} }">
 	       <!-- Page Heading -->
 			<div class="row">
 			    <div class="col-lg-12">
@@ -19,20 +24,22 @@
 	
 			<div class="row">
 				<div class="col-lg-12">
-					<h2 style="margin-top: 0">Cadastro de Serviço</h2>
+					<h2 style="margin-top: 0">
+						${funcao} Serviço
+					</h2>
 				</div>
 				<div class="col-lg-12">
 					<div class="form-group row">
 						<form:errors path="servico.nome" />
 						<label for="example-text-input" class="col-xs-1 col-form-label">Nome</label>
 						<div class="col-xs-7">
-							<input class="form-control" type="text" name="nome" placeholder="Nome"/>
+							<input class="form-control" type="text" name="nome" value="${servicoVo.nome}" placeholder="Nome"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-1 col-form-label">Descrição</label>
 						<div class="col-xs-7">
-							<textarea class="form-control" name="descricao"  placeholder="Descrição"></textarea>
+							<textarea class="form-control" name="descricao" placeholder="Descrição">${servicoVo.descricao }</textarea>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -40,7 +47,14 @@
 						<div class="col-xs-3">
 							<select class="form-control" name="grupoServico.idGrupoServico" placeholder="Grupo Serviço">
 								<option value="#">Selecione um Grupo</option>
-								<option value="1">Suspenção</option>
+								<c:forEach items="${listaGrupoServico}" var="grupoServico">
+									<c:if test="${grupoServico.idGrupoServico == servicoVo.grupoServico.idGrupoServico}">
+										<option selected value="${grupoServico.idGrupoServico}">${grupoServico.nome}</option>									
+									</c:if>
+									<c:if test="${grupoServico.idGrupoServico != servicoVo.grupoServico.idGrupoServico}">
+										<option value="${grupoServico.idGrupoServico}">${grupoServico.nome}</option>									
+									</c:if>
+								</c:forEach>
 							</select>
 						</div>
 						<div class="col-xs-2">
@@ -54,13 +68,13 @@
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-1 col-form-label">Tempo Estimado</label>
 						<div class="col-xs-3">
-							<input class="form-control" type="number" name="tempoEstivamo" placeholder="Tempo estimado em horas"/>
+							<input class="form-control" type="number" value="${servicoVo.tempoEstimado }" name="tempoEstimado" placeholder="Tempo estimado em horas"/>
 						</div>
 					</div>
 					<div class="form-group text-right">
 						<a href="consultar" class="btn btn-default" name="cancelar" type="button">Cancelar</a>
 						<input class="btn btn-default" name="limpar" type="button" value="Limpar"/>
-						<input class="btn btn-primary" name="cadastrar" type="submit" value="Cadastrar"/>
+						<input class="btn btn-primary" name="${funcao}" type="submit" value="${funcao}"/>
 					</div>
 				</div>
 			</div>
@@ -82,18 +96,18 @@
 			</button>
 		</h4>
 	  </div>
-	  <div class="modal-body">
-		<form>
+		<form action="inserirGrupoServico" method="post">
+		  <div class="modal-body">
 			<div class="form-group">
 				<label for="recipient-name" class="control-label">Nome do Grupo</label>
 				<input class="form-control" type="text" name="nome" placeholder="Nome do Grupo Serviço"/>
 			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			<button type="submit" class="btn btn-primary">Salvar Grupo</button>
+		  </div>
 		</form>
-	  </div>
-	  <div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-		<button type="button" class="btn btn-primary">Salvar Grupo</button>
-	  </div>
 	</div>
   </div>
 </div>

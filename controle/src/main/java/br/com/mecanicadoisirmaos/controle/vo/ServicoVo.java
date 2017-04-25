@@ -18,7 +18,7 @@ public class ServicoVo {
 	@NotNull(message="servico.nome.obrigatorio")
 	private String nome;
 	
-	private Integer tempoEstivamo;
+	private Integer tempoEstimado;
 	
 	@Size(min=5)
 	private String descricao;
@@ -59,15 +59,15 @@ public class ServicoVo {
 	 * Responsável por retornar o atributo tempoEstivamo
 	 * @return o tempoEstivamo
 	 */
-	public Integer getTempoEstivamo() {
-		return tempoEstivamo;
+	public Integer getTempoEstimado() {
+		return tempoEstimado;
 	}
 	/**
 	 * Responsável por atribuir valor ao atributo tempoEstivamo
 	 * @param tempoEstivamo para o atributo tempoEstivamo
 	 */
-	public void setTempoEstivamo(Integer tempoEstivamo) {
-		this.tempoEstivamo = tempoEstivamo;
+	public void setTempoEstimado(Integer tempoEstimado) {
+		this.tempoEstimado = tempoEstimado;
 	}
 	/**
 	 * Responsável por retornar o atributo nome
