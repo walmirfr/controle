@@ -32,4 +32,15 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 		servicoDao.deletarServicoPorId(servico.getIdServico());
 	}
 
+	public ServicoVo consultarServicoPorId(Integer idServico){
+		return servicoDao.consultarServicoPorId(idServico);
+	}
+
+	public Boolean alterarServico(ServicoVo servico) {
+		Integer quantidade = servicoDao.alterarServico(servico);
+		if (quantidade > 0) {
+			return true;
+		}
+		return false;
+	}
 }

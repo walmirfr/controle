@@ -54,7 +54,11 @@
 	                                    <tr>
 	                                        <td style="text-align: center;"><a href="#">${servico.nome }</a></td>
 	                                        <td style="text-align: center;">${servico.grupoServico.nome }</td>
-											<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
+											<td style="text-align: center;">
+												<a href="visualizar?idServico=${servico.idServico}" class="btn btn-primary">
+													<i class="fa fa-refresh"></i>
+												</a>
+											</td>
 											<td style="text-align: center;">
 												<a href="" onclick="deletarServico(${servico.idServico})" class="btn btn-danger">
 													<i class="fa">
