@@ -5,6 +5,7 @@ package br.com.mecanicadoisirmaos.controle.dao;
 
 import java.util.List;
 
+import br.com.mecanicadoisirmaos.controle.vo.ManutencaoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 /**
@@ -18,6 +19,8 @@ public interface ServicoDao {
 	public ServicoVo consultarServicoPorId(Integer idServico);
 	
 	public List<ServicoVo> listarServicos();
+	
+	public List<ServicoVo> listarServicos(ManutencaoVo manutencao);
 	
 	public Integer alterarServico(ServicoVo servico);
 	

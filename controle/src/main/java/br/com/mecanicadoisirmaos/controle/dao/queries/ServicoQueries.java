@@ -30,6 +30,9 @@ public interface ServicoQueries {
 			.append("ORDER BY SERV.NOME_SERVICO ")
 			.toString();
 	
+	public static final String QUERY_LISTAR_SERVICOS_POR_MANUTENCAO = new StringBuilder()
+			.toString();
+	
 	public static final String QUERY_EXCLUIR_SERVICO_ID = new StringBuilder()
 			.append("DELETE FROM SERVICO ")
 			.append("WHERE ID_SERVICO = :idServico")

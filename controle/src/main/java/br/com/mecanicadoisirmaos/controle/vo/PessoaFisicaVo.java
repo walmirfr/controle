@@ -13,7 +13,7 @@ public class PessoaFisicaVo extends PessoaVo{
 
 	private String nome;
 	private String cpf;
-	private Date dtNascimento;
+	private String dtNascimento;
 	private String tipoPessoaFisica;
 	/**
 	 * Responsável por retornar o atributo nome
@@ -47,14 +47,14 @@ public class PessoaFisicaVo extends PessoaVo{
 	 * Responsável por retornar o atributo dtNascimento
 	 * @return o dtNascimento
 	 */
-	public Date getDtNascimento() {
+	public String getDtNascimento() {
 		return dtNascimento;
 	}
 	/**
 	 * Responsável por atribuir valor ao atributo dtNascimento
 	 * @param dtNascimento para o atributo dtNascimento
 	 */
-	public void setDtNascimento(Date dtNascimento) {
+	public void setDtNascimento(String dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
 	/**

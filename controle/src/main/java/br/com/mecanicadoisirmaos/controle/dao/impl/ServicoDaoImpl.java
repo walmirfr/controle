@@ -17,6 +17,7 @@ import br.com.mecanicadoisirmaos.controle.dao.queries.ServicoQueries;
 import br.com.mecanicadoisirmaos.controle.util.Constants;
 import br.com.mecanicadoisirmaos.controle.util.Util;
 import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
+import br.com.mecanicadoisirmaos.controle.vo.ManutencaoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 /**
@@ -105,5 +106,9 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 			
 			return servico;
 		}
+	}
+	public List<ServicoVo> listarServicos(ManutencaoVo manutencao) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

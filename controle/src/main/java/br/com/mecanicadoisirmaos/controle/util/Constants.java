@@ -22,6 +22,7 @@ public class Constants {
 	public static final String CPF = "cpf";
 	public static final String CNPJ = "cnpj";
 	public static final String RUA = "rua";
+	public static final String CEP = "cep";
 	public static final String NUMERO = "numero";
 	public static final String COMPLEMENTO = "complemento";
 	public static final String BAIRRO = "bairro";
@@ -30,6 +31,15 @@ public class Constants {
 	public static final String EMAIL = "email";
 	public static final String LOGIN = "login";
 	public static final String SENHA = "senha";
+	public static final String TIPO_PESSOA = "tipoPessoa";
+	public static final String TIPO_PESSOA_FISICA = "tipoPessoaFisica";
+	public static final String NOME_FANTASIA = "nomeFantasia";
+	public static final String RAZAO_SOCIAL = "razaoSocial";
+	public static final String TP_CLIENTE = "C";
+	public static final String TP_PESSOA_FISICA = "F";
+	public static final String TP_PESSOA_JURIDICA = "J";
+	public static final String TP_MECANICO = "M";
+	public static final String TP_FUNCIONARIO = "F";
 	
 	public static final String IDPESSOA = "idPessoa";
 	public static final String IDVEICULO = "idVeiculo";
@@ -39,5 +49,5 @@ public class Constants {
 	public static final String IDSERVICO = "idServico";
 	public static final String IDGRUPOSERVICO = "idGrupoServico";
 	public static final String IDENDERECO = "idEndereco";
-
+	public static final String IDPESSOAJURIDICA = "idPessoaJuridica";
 }

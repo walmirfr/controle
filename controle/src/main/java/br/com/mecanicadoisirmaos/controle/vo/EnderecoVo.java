@@ -17,6 +17,8 @@ public class EnderecoVo {
 	private String bairro;
 	private String cidade;
 	private String uf;
+	
+	private PessoaVo pessoa; 
 	/**
 	 * Responsável por retornar o atributo idEndereco
 	 * @return o idEndereco
@@ -128,6 +130,18 @@ public class EnderecoVo {
 	 */
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+	/**
+	 * @return the pessoa
+	 */
+	public PessoaVo getPessoa() {
+		return pessoa;
+	}
+	/**
+	 * @param pessoa the pessoa to set
+	 */
+	public void setPessoa(PessoaVo pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 }
