@@ -1,10 +1,13 @@
 package br.com.mecanicadoisirmaos.controle.business.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.mecanicadoisirmaos.controle.business.ClienteBusiness;
+import br.com.mecanicadoisirmaos.controle.dao.ClienteDao;
 import br.com.mecanicadoisirmaos.controle.dao.EnderecoDao;
 import br.com.mecanicadoisirmaos.controle.dao.PessoaDao;
 import br.com.mecanicadoisirmaos.controle.dao.PessoaFisicaDao;
@@ -26,6 +29,9 @@ public class ClienteBusinessImpl implements ClienteBusiness {
 	@Autowired
 	private EnderecoDao enderecoDao;
 	
+	@Autowired
+	private ClienteDao clienteDao;
+	
 	@Transactional
 	public Boolean inserirCliente(ClienteVo cliente) throws Exception {
 		
@@ -43,7 +49,7 @@ public class ClienteBusinessImpl implements ClienteBusiness {
 			enderecoDao.inserirEndereco(cliente.getEndereco());
 		}
 
-		if(cliente.getListaTelefones().isEmpty()){
+		if(!cliente.getListaTelefones().isEmpty()){
 			for(TelefoneVo telefone: cliente.getListaTelefones()){
 				telefone.setPessoa(pessoa);
 				pessoaDao.inserirTelefone(telefone);
@@ -51,5 +57,9 @@ public class ClienteBusinessImpl implements ClienteBusiness {
 		}
 		
 		return true;
+	}
+
+	public List<PessoaFisicaVo> listarClientes() throws Exception {
+		return pessoaFisicaDao.listarPessoasPorTipo(Constants.TP_CLIENTE);
 	}
 }

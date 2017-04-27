@@ -30,17 +30,17 @@ public class PessoaDaoImpl extends AbstractDao implements PessoaDao, PessoaQueri
 		parans.addValue(Constants.LOGIN, pessoa.getLogin());
 		parans.addValue(Constants.SENHA, pessoa.getSenha());
 		parans.addValue(Constants.TIPO_PESSOA, pessoa.getTipoPessoa());
-		
+		PessoaJuridicaVo juridica = new PessoaJuridicaVo();
 		if(TIPO_JURIDICO.equals(pessoa.getTipoPessoa())){
-			PessoaJuridicaVo juridica = (PessoaJuridicaVo) pessoa;
-			parans.addValue(Constants.CNPJ, juridica.getCnpj());
-			parans.addValue(Constants.NOME_FANTASIA, juridica.getNomeFantasia());
-			parans.addValue(Constants.RAZAO_SOCIAL, juridica.getRazaoSocial());			
+			juridica = (PessoaJuridicaVo) pessoa;
 		}
+		parans.addValue(Constants.CNPJ, juridica.getCnpj());
+		parans.addValue(Constants.NOME_FANTASIA, juridica.getNomeFantasia());
+		parans.addValue(Constants.RAZAO_SOCIAL, juridica.getRazaoSocial());			
 		try{
 			KeyHolder keyHolder = new GeneratedKeyHolder();
 			getJdbc().update(sql.toString(), parans, keyHolder);
-			return keyHolder.getKey().intValue();
+			return (Integer) keyHolder.getKeys().get("id_pessoa");
 		}catch (DataAccessException d){
 			LOGGER.error("Erro na inclusão da Entidade Pessoa: " + d);
 			throw d;
@@ -52,7 +52,7 @@ public class PessoaDaoImpl extends AbstractDao implements PessoaDao, PessoaQueri
 		MapSqlParameterSource parans = new MapSqlParameterSource();
 		
 		parans.addValue(Constants.IDPESSOA, telefone.getPessoa().getIdPessoa());
-		parans.addValue(Constants.NUMERO, telefone.getNumeroCompleto());
+		parans.addValue(Constants.NUMERO, telefone.getTelefone());
 		
 		try{
 			return getJdbc().update(sql.toString(), parans);

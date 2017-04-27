@@ -40,9 +40,9 @@ public interface ServicoQueries {
 	
 	public static final String QUERY_ALTERAR_SERVICO_ID = new StringBuilder()
 			.append("UPDATE SERVICO SET ")
-			.append("NOME_SERVICO = :nome ")
-			.append("DESCRICAO = :descricao ")
-			.append("TEMPO_ESTIMADO = :tempoEstimado ")
+			.append("NOME_SERVICO = :nome ,")
+			.append("DESCRICAO = :descricao ,")
+			.append("TEMPO_ESTIMADO = :tempoEstimado ,")
 			.append("ID_GRUPO_SERVICO = :idGrupoServico ")
 			.append("WHERE ID_SERVICO = :idServico ")
 			.toString();

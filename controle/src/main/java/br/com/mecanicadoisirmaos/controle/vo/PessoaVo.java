@@ -18,6 +18,7 @@ public class PessoaVo {
 	private Boolean ativo;
 	private String tipoPessoa;
 	private EnderecoVo endereco;
+	private TelefoneVo telefone;
 	private List<TelefoneVo> listaTelefones;
 	/**
 	 * Responsável por retornar o atributo idPessoa
@@ -130,5 +131,19 @@ public class PessoaVo {
 	 */
 	public void setTipoPessoa(String tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
+	}
+	/**
+	 * Responsável por retornar o atributo telefone
+	 * @return o telefone
+	 */
+	public TelefoneVo getTelefone() {
+		return telefone;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo telefone
+	 * @param telefone para o atributo telefone
+	 */
+	public void setTelefone(TelefoneVo telefone) {
+		this.telefone = telefone;
 	}
 }

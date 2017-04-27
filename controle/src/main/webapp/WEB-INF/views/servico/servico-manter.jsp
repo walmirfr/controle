@@ -1,7 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <div id="page-wrapper">
 	<c:if test="${funcao == 'Cadastrar'}">
@@ -9,10 +11,10 @@
 	</c:if>
 	<c:if test="${funcao == 'Alterar'}">
 		<form action="alterarServico" method="post">
+	   		<form:hidden path="servicoVo.idServico" />
 	</c:if>
 	   <div class="container-fluid">
-		<input type="hidden" name="idServico" value="${servicoVo.idServico} }">
-	       <!-- Page Heading -->
+		       <!-- Page Heading -->
 			<div class="row">
 			    <div class="col-lg-12">
 					<h1 class="page-header">

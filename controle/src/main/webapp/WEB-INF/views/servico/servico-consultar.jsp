@@ -5,7 +5,15 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
+				
+				<c:if test="${sucesso != null}">
+					<div class="alert alert-info center" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<span> ${sucesso}</span>
+					</div>
+				</c:if>
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -62,7 +70,7 @@
 											<td style="text-align: center;">
 												<a href="" onclick="deletarServico(${servico.idServico})" class="btn btn-danger">
 													<i class="fa">
-														<c:if test="${servico.ativo eq true}">Excluir</c:if>
+														<c:if test="${servico.ativo eq true}">Ações</c:if>
 													</i>
 												</a>
 											</td>

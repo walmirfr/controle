@@ -9,6 +9,7 @@ public class TelefoneVo {
 	private PessoaVo pessoa;
 	private String numero;
 	private String dd;
+	private String telefone;
 	
 	/**
 	 * Responsável por retornar o atributo pessoa
@@ -52,7 +53,22 @@ public class TelefoneVo {
 	public void setDd(String dd) {
 		this.dd = dd;
 	}
-	public String getNumeroCompleto(){
-		return dd+numero;
+
+	/**
+	 * Responsável por retornar o atributo telefone
+	 * @return o telefone
+	 */
+	public String getTelefone() {
+		if(telefone == null){
+			this.telefone = dd+numero;
+		}
+		return telefone;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo telefone
+	 * @param telefone para o atributo telefone
+	 */
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 }

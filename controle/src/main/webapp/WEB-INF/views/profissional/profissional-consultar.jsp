@@ -14,7 +14,7 @@
 							</h1>
 						</div>
 						<div class="col-lg-1" style="top: 50px; right: 25px;">
-							<a href="profissional-cadastrar.html" class="btn btn-primary">Cadastrar</a>
+							<a href="../profissional/cadastrar" class="btn btn-primary">Cadastrar</a>
 						</div>
 						
                     </div>
@@ -50,42 +50,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									
+                                    <c:forEach items="${listaProfissionais}" var="profissional">
+	                                    <tr>
+	                                        <td><a href="#"> ${profissional.nome }</a></td>
+	                                        <td>${profissional.email }</td>
+	                                        <td class="center">${profissional.telefone.telefone }</td>
+											<td class="center">
+												<a href="#" class="btn btn-primary">
+													<i class="fa fa-refresh"></i>
+												</a>
+											</td>
+											<td class="center">
+												<a href="#" class="btn btn-danger">
+													<i class="fa fa-remove"></i>
+												</a>
+											</td>
+	                                    </tr>                                   						
+                                	</c:forEach>
                                 </tbody>
                             </table>
                         </div>

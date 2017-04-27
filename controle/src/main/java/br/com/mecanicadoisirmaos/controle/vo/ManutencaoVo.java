@@ -20,9 +20,9 @@ public class ManutencaoVo {
 	private VeiculoVo veiculo;
 	private ServicoVo servico;
 	private PessoaVo proprietario;
-	private MecanicoVo mecanico;
+	private ProfissionalVo mecanico;
 	private List<ServicoVo> listaServicos;
-	private List<MecanicoVo> listaMecanicos;
+	private List<ProfissionalVo> listaMecanicos;
 	/**
 	 * Responsável por retornar o atributo idManutencao
 	 * @return o idManutencao
@@ -139,14 +139,14 @@ public class ManutencaoVo {
 	 * Responsável por retornar o atributo mecanico
 	 * @return o mecanico
 	 */
-	public MecanicoVo getMecanico() {
+	public ProfissionalVo getMecanico() {
 		return mecanico;
 	}
 	/**
 	 * Responsável por atribuir valor ao atributo mecanico
 	 * @param mecanico para o atributo mecanico
 	 */
-	public void setMecanico(MecanicoVo mecanico) {
+	public void setMecanico(ProfissionalVo mecanico) {
 		this.mecanico = mecanico;
 	}
 	/**
@@ -167,14 +167,14 @@ public class ManutencaoVo {
 	 * Responsável por retornar o atributo listaMecanicos
 	 * @return o listaMecanicos
 	 */
-	public List<MecanicoVo> getListaMecanicos() {
+	public List<ProfissionalVo> getListaMecanicos() {
 		return listaMecanicos;
 	}
 	/**
 	 * Responsável por atribuir valor ao atributo listaMecanicos
 	 * @param listaMecanicos para o atributo listaMecanicos
 	 */
-	public void setListaMecanicos(List<MecanicoVo> listaMecanicos) {
+	public void setListaMecanicos(List<ProfissionalVo> listaMecanicos) {
 		this.listaMecanicos = listaMecanicos;
 	}
 	

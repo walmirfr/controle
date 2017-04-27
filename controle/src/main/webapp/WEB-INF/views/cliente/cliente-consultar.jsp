@@ -50,42 +50,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td><a href="#"> Fulano de Tal</a></td>
-                                        <td>fulanotal@gmail.com</td>
-                                        <td style="text-align: center;">2222-3333</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									
+                                	<c:forEach items="${listaClientes}" var="cliente">
+	                                    <tr>
+	                                        <td><a href="#"> ${cliente.nome }</a></td>
+	                                        <td>${cliente.email }</td>
+	                                        <td class="center">${cliente.telefone.telefone }</td>
+											<td class="center">
+												<a href="#" class="btn btn-primary">
+													<i class="fa fa-refresh"></i>
+												</a>
+											</td>
+											<td class="center">
+												<a href="#" class="btn btn-danger">
+													<i class="fa fa-remove"></i>
+												</a>
+											</td>
+	                                    </tr>                                   						
+                                	</c:forEach>
                                 </tbody>
                             </table>
                         </div>

@@ -1,5 +1,6 @@
 package br.com.mecanicadoisirmaos.controle.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,15 +10,20 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.mecanicadoisirmaos.controle.business.GrupoServicoBusiness;
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
+import br.com.mecanicadoisirmaos.controle.validation.ServicoValidation;
 import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 @Controller
+@RequestMapping("/servico")
 public class ServicoController {
 
 	private final static Logger LOGGER = Logger.getLogger(ServicoController.class);
@@ -27,9 +33,15 @@ public class ServicoController {
 
 	@Autowired
 	private GrupoServicoBusiness grupoServicoBusiness;
+	/*
+	@InitBinder
+	public void InitBinder(WebDataBinder binder){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    binder.addValidators(new ServicoValidation());
+	}*/
 	
 	/*LINKS*/
-	@RequestMapping("/servico/cadastrar")
+	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrarServico(){
 		ModelAndView mv = getRetorno("servico/servico-cadastrar");
 		mv.addObject("listaGrupoServico", listarGrupoServico());
@@ -37,22 +49,22 @@ public class ServicoController {
 		return mv;
 	}
 	
-	@RequestMapping("/servico/inserirGrupoServico")
+	@RequestMapping("/inserirGrupoServico")
 	public ModelAndView inserirGrupoServico(GrupoServicoVo grupoServicoVo){
 		grupoServicoBusiness.cadastrarGrupoServico(grupoServicoVo);
 		return cadastrarServico();
 	}
 	
-	@RequestMapping("/servico/alterarServico")
-	public ModelAndView alterarServico(ServicoVo servicoVo){
+	@RequestMapping("/alterarServico")
+	public ModelAndView alterarServico(ServicoVo servico){
 		System.out.println("");
-		if(servicoBusiness.alterarServico(servicoVo)){
+		if(servicoBusiness.alterarServico(servico)){
 			return listarServicos();			
 		}
 		return cadastrarServico();
 	}
 	
-	@RequestMapping("/servico/visualizar")
+	@RequestMapping("/visualizar")
 	public ModelAndView visualizarServico(ServicoVo servicoVo){
 		ModelAndView mv = getRetorno("servico/servico-alterar");
 		ServicoVo servico = servicoBusiness.consultarServicoPorId(servicoVo.getIdServico());
@@ -62,7 +74,7 @@ public class ServicoController {
 		return mv;
 	}
 	
-	@RequestMapping("/servico/consultar")
+	@RequestMapping("/consultar")
 	public ModelAndView listarServicos(){
 		ModelAndView mv = getRetorno("servico/servico-consultar");
 		mv.addObject("listaServicos", servicoBusiness.listarServicos());
@@ -70,25 +82,20 @@ public class ServicoController {
 	}
 	
 	/*AÇÕES*/
-	@RequestMapping("/servico/inserirServico")
-	public ModelAndView inserirServico(@Valid ServicoVo servico, BindingResult result){
-		/*if(result.hasErrors()){
+	@RequestMapping("/inserirServico")
+	public ModelAndView inserirServico(@Valid ServicoVo servico, BindingResult result, RedirectAttributes redirectAtributes){
+		if(result.hasErrors()){
 			return cadastrarServico();
-		}*/
+		}
+		redirectAtributes.addFlashAttribute("sucesso", "Serviço "+ servico.getNome() +" foi cadastrado com sucesso!");
 		servicoBusiness.inserirServico(servico);
-		return listarServicos();
+		return new ModelAndView("redirect:consultar");
 	}
 	
-	@RequestMapping("/servico/deletarServico")
-	public void deletarServico(ServicoVo servico, HttpServletResponse response){
+	@RequestMapping("/deletarServico")
+	public void deletarServico(ServicoVo servico, HttpServletResponse response, RedirectAttributes redirectAtributes){
 		servicoBusiness.deletarServico(servico);
-		
-		response.setStatus(200);
-	}
-	
-	@RequestMapping("/inserirGrupoServico")
-	public void inserirGrupoServico(ServicoVo servico, HttpServletResponse response){
-		servicoBusiness.inserirServico(servico);
+		redirectAtributes.addFlashAttribute("sucesso", "Serviço removido com sucesso!");
 		response.setStatus(200);
 	}
 	

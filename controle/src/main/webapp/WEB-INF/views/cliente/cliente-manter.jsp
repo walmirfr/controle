@@ -26,11 +26,15 @@
 								 
 								<label for="example-text-input" class="col-xs-1 col-form-label">Data de Nascimento</label>
 								<div class="col-xs-3">
-									<input class="form-control" type="date" name="dtNascimento" placeholder="Data de Nascimento"/>
+									<div class="input-group date">
+									    <input type="text" name="dtNascimento" class="form-control datepicker">
+									    <div class="input-group-addon">
+									        <span class="glyphicon glyphicon-th"></span>
+									    </div>
+									</div>
 								</div>
 								 
 							</div>
-							<!-- 
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-1 col-form-label">Email</label>
 								<div class="col-xs-7">
@@ -111,7 +115,6 @@
 										</tr>
 									</table>
 								</div>
-								 -->
 							</div>
 							<div class="form-group text-right">
 								<a href="../cliente/consultar" class="btn btn-default" name="cancelar" type="button">Cancelar</a>

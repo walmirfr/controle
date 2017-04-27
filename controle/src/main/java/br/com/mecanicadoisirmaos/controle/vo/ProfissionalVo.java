@@ -9,7 +9,7 @@ import java.util.List;
  * @author walmi
  *
  */
-public class MecanicoVo extends PessoaFisicaVo{
+public class ProfissionalVo extends PessoaFisicaVo{
 
 	private Double salario;
 	private List<ManutencaoVo> listaManutencoes;

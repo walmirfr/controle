@@ -31,14 +31,15 @@ public class Constants {
 	public static final String EMAIL = "email";
 	public static final String LOGIN = "login";
 	public static final String SENHA = "senha";
+	public static final String TIPO = "tipo";
 	public static final String TIPO_PESSOA = "tipoPessoa";
 	public static final String TIPO_PESSOA_FISICA = "tipoPessoaFisica";
 	public static final String NOME_FANTASIA = "nomeFantasia";
 	public static final String RAZAO_SOCIAL = "razaoSocial";
 	public static final String TP_CLIENTE = "C";
+	public static final String TP_PROFISSIONAL = "P";
 	public static final String TP_PESSOA_FISICA = "F";
 	public static final String TP_PESSOA_JURIDICA = "J";
-	public static final String TP_MECANICO = "M";
 	public static final String TP_FUNCIONARIO = "F";
 	
 	public static final String IDPESSOA = "idPessoa";

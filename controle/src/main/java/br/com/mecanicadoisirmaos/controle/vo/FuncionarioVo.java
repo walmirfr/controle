@@ -10,6 +10,13 @@ package br.com.mecanicadoisirmaos.controle.vo;
 public class FuncionarioVo extends PessoaFisicaVo{
 
 	private EmpresaVo empresa;
+	
+	public FuncionarioVo() {
+	}
+	
+	public FuncionarioVo(EmpresaVo empresa) {
+		this.empresa = empresa;
+	}
 
 	/**
 	 * Responsável por retornar o atributo empresa
