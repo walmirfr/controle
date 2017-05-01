@@ -10,4 +10,6 @@ public interface ClienteBusiness {
 	public Boolean inserirCliente(ClienteVo cliente) throws Exception;
 	
 	public List<PessoaFisicaVo> listarClientes() throws Exception;
+	
+	public List<ClienteVo> listarClientesPart() throws Exception;
 }

@@ -9,4 +9,6 @@ import br.com.mecanicadoisirmaos.controle.vo.ClienteVo;
 public interface ClienteDao {
 
 	public List<ClienteVo> listarClientes() throws DataAccessException;
+	
+	public List<ClienteVo> listarClientesPart() throws DataAccessException;
 }

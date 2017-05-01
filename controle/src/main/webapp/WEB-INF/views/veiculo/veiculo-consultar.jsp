@@ -10,11 +10,11 @@
                     <div class="col-lg-12">
 						<div class="col-lg-11">
 							<h1 class="page-header">
-								VeÃ­culo
+								Veículo
 							</h1>
 						</div>
 						<div class="col-lg-1" style="top: 50px; right: 25px;">
-							<a href="veiculo-cadastrar.html" class="btn btn-primary">Cadastrar</a>
+							<a href="../veiculo/cadastrar" class="btn btn-primary">Cadastrar</a>
 						</div>
 						
                     </div>
@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-12">
 						<div class="col-lg-6">
-							<h2 style="margin-top: 0">Lista de VeÃ­culos</h2>
+							<h2 style="margin-top: 0">Lista de Veículos</h2>
 						</div>
 						<div class="col-lg-6">
 							<form method="post" action="#">
@@ -44,47 +44,21 @@
                                     <tr>
                                         <th style="text-align: center;">Placa</th>
                                         <th style="text-align: center;">Marca/Modelo</th>
-                                        <th style="text-align: center;">ProprietÃ¡rio</th>
+                                        <th style="text-align: center;">Proprietário</th>
 										<th style="text-align: center;">Alterar</th>
 										<th style="text-align: center;">Excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td style="text-align: center;"><a href="#"> AAA-1234</a></td>
-                                        <td style="text-align: center;">Fiat/Uno</td>
-                                        <td style="text-align: center;">Fulano</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: center;"><a href="#"> AAA-1234</a></td>
-                                        <td style="text-align: center;">Fiat/Uno</td>
-                                        <td style="text-align: center;">Fulano</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td style="text-align: center;"><a href="#"> AAA-1234</a></td>
-                                        <td style="text-align: center;">Fiat/Uno</td>
-                                        <td style="text-align: center;">Fulano</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td style="text-align: center;"><a href="#"> AAA-1234</a></td>
-                                        <td style="text-align: center;">Fiat/Uno</td>
-                                        <td style="text-align: center;">Fulano</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
-									<tr>
-                                        <td style="text-align: center;"><a href="#"> AAA-1234</a></td>
-                                        <td style="text-align: center;">Fiat/Uno</td>
-                                        <td style="text-align: center;">Fulano</td>
-										<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
-										<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
-                                    </tr>
+                                	<c:forEach items="${listaVeiculos}" var="veiculo">
+	                                    <tr>
+	                                        <td style="text-align: center;"><a href="#"> ${veiculo.placa}</a></td>
+	                                        <td style="text-align: center;">${veiculo.marca.nome}/${veiculo.modelo.nome }</td>
+	                                        <td style="text-align: center;">${veiculo.proprietario.nome }</td>
+											<td style="text-align: center;"><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i></a></td>
+											<td style="text-align: center;"><a href="#" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
+	                                    </tr>
+                                	</c:forEach>
                                 </tbody>
                             </table>
                         </div>

@@ -16,7 +16,9 @@ public class VeiculoVo {
 	private Integer ano;
 	private String placa;
 	private Boolean ativo;
+	private String observacao;
 	private PessoaVo proprietario;
+	private MarcaVo marca;
 	private ModeloVo modelo;
 	private ManutencaoVo manutencao;
 	private List<ManutencaoVo> listaManutencoes;
@@ -145,5 +147,33 @@ public class VeiculoVo {
 	 */
 	public void setListaManutencoes(List<ManutencaoVo> listaManutencoes) {
 		this.listaManutencoes = listaManutencoes;
+	}
+	/**
+	 * Responsável por retornar o atributo marca
+	 * @return o marca
+	 */
+	public MarcaVo getMarca() {
+		return marca;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo marca
+	 * @param marca para o atributo marca
+	 */
+	public void setMarca(MarcaVo marca) {
+		this.marca = marca;
+	}
+	/**
+	 * Responsável por retornar o atributo observacao
+	 * @return o observacao
+	 */
+	public String getObservacao() {
+		return observacao;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo observacao
+	 * @param observacao para o atributo observacao
+	 */
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 }

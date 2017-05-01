@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-        <div id="page-wrapper">
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+        <div id="page-wrapper">
+		<c:if test="${funcao == 'Cadastrar'}">
+			<form action="inserirVeiculo" method="post">
+		</c:if>
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
 						<h1 class="page-header">
-							Cadastrar VeÃ­culo
+							Cadastrar Veículo
 						</h1>
                     </div>
                 </div>
@@ -20,27 +24,35 @@
 						<div class="form-group row">
 							<label for="example-text-input" class="col-xs-1 col-form-label">Marca</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="marca" placeholder="nascimento">
+								<select id="selectMarca" class="form-control" name="marca.idMarca" placeholder="nascimento">
 									<option value="#">Selecione uma Marca</option>
-									<option value="0">Fiat</option>
-									<option value="1">Ford</option>
-									<option value="2">Chevrolet</option>
+									<c:if test="${listaMarcas != null && listaMarcas.size() > 0 }">
+										<c:forEach items="${listaMarcas}" var="marca">
+											<option value="${marca.idMarca }">${marca.nome}</option>
+										</c:forEach>
+									</c:if>
 								</select>
 							</div>
 							<div class="col-xs-2">
-								<input class="btn btn-primary" name="cadastrar" type="button" value="Adicionar Marca"/>
+								<button class="btn btn-primary" type="button" id="btMarca" data-toggle="modal" data-target="#modalMarca">
+									Adicionar Marca
+								</button>
 							</div>
 							<label for="example-text-input" class="col-xs-1 col-form-label">Modelo</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="marca" placeholder="nascimento">
+								<select class="form-control" id="selectModelo" name="modelo.idModelo" placeholder="nascimento">
 									<option value="#">Selecione um Modelo</option>
-									<option value="0">Uno</option>
-									<option value="1">Punto</option>
-									<option value="2">Ducato</option>
+									<c:if test="${listaModelos != null && listaModelos.size() > 0 }">
+										<c:forEach items="${listaModelos}" var="modelo">
+											<option value="${modelo.idModelo }">${modelo.nome}</option>
+										</c:forEach>
+									</c:if>
 								</select>
 							</div>
 							<div class="col-xs-2">
-								<input class="btn btn-primary" name="cadastrar" type="button" value="Adicionar Modelo"/>
+								<button class="btn btn-primary" type="button" id="btModelo" data-toggle="modal" data-target="#modalModelo">
+									Adicionar Modelo
+								</button>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -58,51 +70,107 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="example-text-input" class="col-xs-1 col-form-label">NÃºmero Chassi</label>
-							<div class="col-xs-3">
-								<input class="form-control" type="text" name="chassi" placeholder="NÃºmero do Chassi"/>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="example-text-input" class="col-xs-1 col-form-label">ObservaÃ§Ã£o</label>
+							<label for="example-text-input" class="col-xs-1 col-form-label">Observação</label>
 							<div class="col-xs-11">
-								<textarea class="form-control" type="text" name="chassi" placeholder="ObservaÃ§Ã£o"></textarea>
+								<textarea class="form-control" name="observacao" placeholder="Observação"></textarea>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-xs-2 col-form-label">Tipo de ProprietÃ¡rio:</label>
+							<label class="col-xs-2 col-form-label">Tipo de Proprietário</label>
 							<label class="radio-inline col-xs-1">
 								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Cliente
 							</label>
 							<label class="radio-inline col-xs-1">
 								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Empresa
 							</label>
-							<label for="example-text-input" class="col-xs-2 col-form-label">Filtro ProprietÃ¡rio</label>
+							<label for="example-text-input" class="col-xs-2 col-form-label">Filtro Proprietário</label>
 							<div class="col-xs-3">
 								<input class="form-control" type="text" name="filtro" placeholder="Filtro por Nome"/>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="example-text-input" class="col-xs-1 col-form-label">ProprietÃ¡rio</label>
+							<label for="example-text-input" class="col-xs-1 col-form-label">Proprietário</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="proprietario" placeholder="nascimento">
-									<option value="#">Selecione um ProprietÃ¡rio</option>
-									<option value="0">Fulano</option>
-									<option value="1">Fulano 2</option>
-									<option value="2">Fulano 3</option>
+								<select class="form-control" name="proprietario.idPessoa" >
+									<option value="#">Selecione um Proprietário</option>
+									<c:forEach items="${listaClientes}" var="cliente">
+										<option value="${cliente.idPessoa }">${cliente.nome }</option>									
+									</c:forEach>							
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group text-right">
-							<a href="veiculo-consultar.html" class="btn btn-default" name="cancelar" type="button">Cancelar</a>
+							<a href="../veiculo/consultar" class="btn btn-default" type="button">Cancelar</a>
 							<input class="btn btn-default" name="limpar" type="button" value="Limpar"/>
-							<input class="btn btn-primary" name="cadastrar" type="button" value="Cadastrar"/>
+							<input class="btn btn-primary" name="cadastrar" type="submit" value="Cadastrar"/>
 						</div>
                     </div>
                 </div>
                 <!-- /.row -->
             </div>
+            </form>
             <!-- /.container-fluid -->
 
         </div>
+
+
+<!--Modal Adicionar Marca-->
+<div class="modal fade" id="modalMarca" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h4 class="modal-title" id="ModalMarca">Adicionar Marca
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h4>
+	  </div>
+		<form action="inserirMarca" method="post">
+		  <div class="modal-body">
+			<div class="form-group">
+				<label for="recipient-name" class="control-label">Nome da Marca</label>
+				<input class="form-control" type="text" name="nome" placeholder="Nome da Marca"/>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			<button type="submit" class="btn btn-primary">Salvar Marca</button>
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+
+
+<!--Modal Adicionar Marca-->
+<div class="modal fade" id="modalModelo" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h4 class="modal-title" id="ModalMarca">Adicionar Modelo
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h4>
+	  </div>
+		<form action="inserirModelo" method="post">
+			<input type="hidden" name="marca.idMarca" id="marcaDoModelo">
+		  <div class="modal-body">
+			<div class="form-group">
+				<label for="recipient-name" class="control-label">Nome do Modelo</label>
+				<input class="form-control" type="text" name="nome" placeholder="Nome do Modelo"/>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			<button type="submit" class="btn btn-primary">Salvar Modelo</button>
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+
+<!-- Veiculo-Master JavaScript -->
+	<script src="<c:url value="/static/js/veiculo/veiculo-master.js" />"
+		type="text/javascript"></script>

@@ -9,4 +9,11 @@ public interface ClienteQueries {
 			.append("INNER JOIN TELEFONE T ON P.ID_PESSOA = T.ID_PESSOA ")
 			.append("WHERE PF.TIPO_PESSOA_FISICA = 'C' ")
 			.toString();
+	
+	public static final String QUERY_LISTAR_CLIENTES_PART = new StringBuilder()
+			.append("SELECT P.ID_PESSOA, PF.NOME ")
+			.append("FROM PESSOA P ")
+			.append("INNER JOIN PESSOA_FISICA PF ON P.ID_PESSOA = PF.ID_PESSOA ")
+			.append("WHERE PF.TIPO_PESSOA_FISICA = 'C' ")
+			.toString();
 }

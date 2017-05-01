@@ -27,8 +27,16 @@ public class ClienteDaoImpl extends AbstractDao implements ClienteDao, ClienteQu
 		}
 	}
 	
+	public List<ClienteVo> listarClientesPart() throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_LISTAR_CLIENTES_PART);
+		try{
+			return getJdbc().query(sql.toString(), new ClientePartRowMapper());
+		}catch (DataAccessException d){
+			throw d;
+		}
+	}
+	
 	public static class ClienteRowMapper implements RowMapper<ClienteVo>{
-
 		public ClienteVo mapRow(ResultSet rs, int rowNum) throws SQLException {
 			ClienteVo cliente = new ClienteVo();
 			cliente.setIdPessoa(rs.getInt("ID_PESSOA"));
@@ -40,6 +48,13 @@ public class ClienteDaoImpl extends AbstractDao implements ClienteDao, ClienteQu
 			cliente.setTelefone(telefone);
 			return cliente;
 		}
-		
+	}
+	public static class ClientePartRowMapper implements RowMapper<ClienteVo>{
+		public ClienteVo mapRow(ResultSet rs, int rowNum) throws SQLException {
+			ClienteVo cliente = new ClienteVo();
+			cliente.setIdPessoa(rs.getInt("ID_PESSOA"));
+			cliente.setNome(rs.getString("NOME"));
+			return cliente;
+		}
 	}
 }

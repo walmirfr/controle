@@ -11,8 +11,8 @@ public class Constants {
 	public static final String ATIVO = "ativo";
 	public static final String SALARIO = "salario";
 	public static final String OBSERVACAO = "observacao";
-	public static final String DATAENTRADA = "dtEntrada";
-	public static final String DATASAIDA = "dtSaida";
+	public static final String DATAENTRADA = "dataEntrada";
+	public static final String DATASAIDA = "dataSaida";
 	public static final String DATANASCIMENTO = "dtNascimento";
 	public static final String PRECO = "preco";
 	public static final String COR = "cor";

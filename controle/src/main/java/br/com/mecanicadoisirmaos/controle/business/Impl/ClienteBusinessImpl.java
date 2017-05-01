@@ -62,4 +62,8 @@ public class ClienteBusinessImpl implements ClienteBusiness {
 	public List<PessoaFisicaVo> listarClientes() throws Exception {
 		return pessoaFisicaDao.listarPessoasPorTipo(Constants.TP_CLIENTE);
 	}
+	
+	public List<ClienteVo> listarClientesPart() throws Exception {
+		return clienteDao.listarClientesPart();
+	}
 }
