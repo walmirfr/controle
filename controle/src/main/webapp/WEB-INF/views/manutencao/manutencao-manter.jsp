@@ -102,7 +102,7 @@
 						<div class="form-group row">
 							<label for="example-text-input" class="col-xs-1 col-form-label">Grupo Serviço</label>
 							<div class="col-xs-3">
-								<select class="form-control">
+								<select id="selectgrupoServico" class="form-control">
 									<option value="#">Selecione um Grupo</option>
 									<c:forEach items="${listaGrupos}" var="grupoServico">
 										<c:if test="${grupoServico.idGrupoServico == servicoVo.grupoServico.idGrupoServico}">

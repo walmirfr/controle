@@ -12,6 +12,10 @@
 <link href="<c:url value="/static/css/comum/bootstrap.min.css" />"
 	rel="stylesheet">
 
+<!-- Bootstrap Core CSS -->
+<link href="<c:url value="/static/css/comum/bootstrap-theme.css" />"
+	rel="stylesheet">
+
 <!-- Custom CSS -->
 <link href="<c:url value="/static/css/comum/sb-admin.css" />"
 	rel="stylesheet">

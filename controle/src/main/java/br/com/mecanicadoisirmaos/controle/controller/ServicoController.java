@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.mecanicadoisirmaos.controle.business.GrupoServicoBusiness;
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
+import br.com.mecanicadoisirmaos.controle.model.AjaxResponseGrupoServico;
 import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
@@ -29,18 +31,13 @@ public class ServicoController {
 
 	@Autowired
 	private GrupoServicoBusiness grupoServicoBusiness;
-	/*
-	@InitBinder
-	public void InitBinder(WebDataBinder binder){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    binder.addValidators(new ServicoValidation());
-	}*/
 	
 	/*LINKS*/
 	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrarServico(){
 		ModelAndView mv = getRetorno("servico/servico-cadastrar");
 		mv.addObject("listaGrupoServico", listarGrupoServico());
+		mv.addObject("servico", new ServicoVo());
 		mv.addObject("funcao", "Cadastrar");
 		return mv;
 	}
@@ -79,9 +76,13 @@ public class ServicoController {
 	
 	/*AÇÕES*/
 	@RequestMapping("/inserirServico")
-	public ModelAndView inserirServico(@Valid ServicoVo servico, BindingResult result, RedirectAttributes redirectAtributes){
+	public ModelAndView inserirServico(@Valid ServicoVo servico, final BindingResult result, final RedirectAttributes redirectAtributes){
 		if(result.hasErrors()){
-			return cadastrarServico();
+			System.out.println(result.getFieldErrors());
+			redirectAtributes.addFlashAttribute("org.springframework.validation.BindingResult.register", result);
+			redirectAtributes.addFlashAttribute("errors", result);
+			redirectAtributes.addFlashAttribute("servico", servico);
+			return new ModelAndView("redirect:cadastrar");
 		}
 		redirectAtributes.addFlashAttribute("sucesso", "Serviço "+ servico.getNome() +" foi cadastrado com sucesso!");
 		servicoBusiness.inserirServico(servico);
@@ -89,10 +90,26 @@ public class ServicoController {
 	}
 	
 	@RequestMapping("/deletarServico")
-	public void deletarServico(ServicoVo servico, HttpServletResponse response, RedirectAttributes redirectAtributes){
+	public ModelAndView deletarServico(ServicoVo servico, HttpServletResponse response, RedirectAttributes redirectAtributes){
 		servicoBusiness.deletarServico(servico);
 		redirectAtributes.addFlashAttribute("sucesso", "Serviço removido com sucesso!");
-		response.setStatus(200);
+		return new ModelAndView("redirect:consultar");
+	}
+	
+	@RequestMapping("/ativarDesativarServico")
+	public ModelAndView ativarDesativarServico(ServicoVo servico, String funcao){
+		try{
+			servicoBusiness.ativarDesativarServico(servico, funcao);
+		}catch(Exception e){
+			LOGGER.error("Erro ao ativar desativar o Servico: " + e);
+		}
+		return new ModelAndView("redirect:consultar");
+	}
+
+	@ResponseBody
+	@RequestMapping("/carregarListaGrupoServico")
+	public List<GrupoServicoVo> carregarListaGrupoServico(){
+		return listarGrupoServico();
 	}
 	
 	private ModelAndView getRetorno(String pagRetorno){

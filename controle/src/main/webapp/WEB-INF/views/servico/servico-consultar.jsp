@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
         <div id="page-wrapper">
 
@@ -23,7 +24,7 @@
 							</h1>
 						</div>
 						<div class="col-lg-1" style="top: 50px; right: 25px;">
-							<a href="cadastrar" class="btn btn-primary">Cadastrar</a>
+							<a href="cadastrar" class="btn btn-lg btn-primary">Cadastrar</a>
 						</div>
 						
                     </div>
@@ -38,9 +39,9 @@
 						<div class="col-lg-6">
 							<form method="post" action="#">
 								<div class="input-group">
-									<input name="filtro" placeholder="Filtro pelo Nome" class="form-control">
+									<input name="filtro" placeholder="Filtro pelo Nome" class="form-control input-lg">
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button">Filtrar</button> 
+										<button class="btn btn-lg btn-primary" type="button">Filtrar</button> 
 									</span>
 								</div>
 							</form>
@@ -63,16 +64,32 @@
 	                                        <td style="text-align: center;"><a href="#">${servico.nome }</a></td>
 	                                        <td style="text-align: center;">${servico.grupoServico.nome }</td>
 											<td style="text-align: center;">
-												<a href="visualizar?idServico=${servico.idServico}" class="btn btn-primary">
+												<a href="visualizar?idServico=${servico.idServico}" class="btn btn-lg btn-primary">
 													<i class="fa fa-refresh"></i>
 												</a>
 											</td>
 											<td style="text-align: center;">
-												<a href="" onclick="deletarServico(${servico.idServico})" class="btn btn-danger">
-													<i class="fa">
-														<c:if test="${servico.ativo eq true}">Ações</c:if>
-													</i>
-												</a>
+												<c:if test="${servico.ativo eq true && servico.vinculo eq false}">
+													<a href="#" onclick="modalExcluir(${servico.idServico})" data-target="#modalExcluir" data-toggle="modal" class="btn btn-lg btn-danger">
+														<i class="fa">
+															Excluir
+														</i>
+													</a>
+												</c:if>
+												<c:if test="${servico.ativo eq true && servico.vinculo eq true}">
+													<a href="" data-target="#modalDesativar" data-toggle="modal" class="btn btn-lg btn-warning">
+														<i class="fa">
+															Desativar
+														</i>
+													</a>
+												</c:if>
+												<c:if test="${servico.ativo eq false}">
+													<a href="" data-target="#modalAtivar" data-toggle="modal" class="btn btn-lg btn-success">
+														<i class="fa">
+															Ativar
+														</i>
+													</a>
+												</c:if>
 											</td>
 	                                    </tr>
                                 	</c:forEach>
@@ -88,4 +105,82 @@
         </div>
         <!-- /#page-wrapper -->
 
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header header-danger">
+		<h2 class="modal-title">Excluir
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h2>
+	  </div>
+		<form action="deletarServico" method="post">
+			<input type="hidden" name="idServico" id="excluirServico"/>
+			<div class="modal-body center">
+				<h3>
+			        <p>O Serviço será excluido!</p>
+			        <p>Tem certeza que deseja excluir?</p>
+				</h3>
+		    </div>
+		  <div class="modal-footer">
+			<button type="submit" class="btn btn-lg btn-danger">Sim</button>
+			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalDesativar" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header header-warning">
+		<h2 class="modal-title">Desativar
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h2>
+	  </div>
+		<form action="inserirGrupoServico" method="post">
+			<div class="modal-body center">
+				<h3>
+			        <p>O Serviço será desativado!</p>
+			        <p>Tem certeza que deseja desativar?</p>
+				</h3>
+		    </div>
+		  <div class="modal-footer">
+			<button type="submit" class="btn btn-lg btn-warning">Sim</button>
+			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalAtivar" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header header-success">
+		<h2 class="modal-title">Ativar
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h2>
+	  </div>
+		<form action="inserirGrupoServico" method="post">
+			<div class="modal-body center">
+				<h3>
+			        <p>O Serviço <b>Ponteira</b> será ativado!</p>
+			        <p>Tem certeza que deseja ativar?</p>
+				</h3>
+		    </div>
+		  <div class="modal-footer">
+			<button type="submit" class="btn btn-lg btn-success">Sim</button>
+			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
         <script src="<c:url value="/static/js/servico/servico-consultar.js" />" type="text/javascript"></script>

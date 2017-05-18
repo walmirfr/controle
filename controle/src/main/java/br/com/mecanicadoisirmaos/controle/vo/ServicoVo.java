@@ -15,14 +15,14 @@ public class ServicoVo {
 
 	private Integer idServico;
 	
-	@NotNull(message="servico.nome.obrigatorio")
+	@NotNull(message="servico.nome.obrigatorio")@Size(min = 5, message = "Tamanho mínimo de 5 caracteres.")
 	private String nome;
 	
 	private Integer tempoEstimado;
 	
-	@Size(min=5)
 	private String descricao;
 	private Boolean ativo;
+	private Boolean vinculo;
 	private Double preco;
 	private GrupoServicoVo grupoServico;
 	private ManutencaoVo manutencao;
@@ -152,5 +152,19 @@ public class ServicoVo {
 	 */
 	public void setListaManutencoes(List<ManutencaoVo> listaManutencoes) {
 		this.listaManutencoes = listaManutencoes;
+	}
+	/**
+	 * Responsável por retornar o atributo vinculo
+	 * @return o vinculo
+	 */
+	public Boolean getVinculo() {
+		return vinculo;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo vinculo
+	 * @param vinculo para o atributo vinculo
+	 */
+	public void setVinculo(Boolean vinculo) {
+		this.vinculo = vinculo;
 	}
 }

@@ -1,3 +1,29 @@
 .center{
 	text-align: center;
 }
+
+.header-danger{
+	background-color: #d9534f;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.header-warning{
+	background-color: #d58512;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.header-success{
+	background-color: #449d44;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.side-nav,.table,.navbar-inverse{
+	font-size: 20px;
+}
+
+.navbar-brand{
+	font-size: 30px;
+}

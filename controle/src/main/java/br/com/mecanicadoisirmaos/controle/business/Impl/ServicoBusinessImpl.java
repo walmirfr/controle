@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
 import br.com.mecanicadoisirmaos.controle.dao.ServicoDao;
+import br.com.mecanicadoisirmaos.controle.util.Constants;
+import br.com.mecanicadoisirmaos.controle.util.Util;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 @Component
@@ -39,6 +41,20 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 	public Boolean alterarServico(ServicoVo servico) {
 		Integer quantidade = servicoDao.alterarServico(servico);
 		if (quantidade > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public Boolean ativarDesativarServico(ServicoVo servico, String funcao) throws Exception {
+		
+		if(Constants.ATIVAR.equals(funcao)){
+			servico.setAtivo(Util.getAtivo(Constants.SIM));
+		}else if(Constants.DESATIVAR.equals(funcao)){
+			servico.setAtivo(Util.getAtivo(Constants.NAO));
+		}
+		
+		if(servicoDao.ativarDesativarServico(servico, funcao) > 0){
 			return true;
 		}
 		return false;

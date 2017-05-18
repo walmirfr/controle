@@ -25,6 +25,7 @@ public interface ServicoQueries {
 	
 	public static final String QUERY_LISTAR_SERVICOS = new StringBuilder()
 			.append("SELECT SERV.ID_SERVICO, SERV.NOME_SERVICO, SERV.ATIVO, GRUP.NOME_GRUPO_SERVICO ")
+			.append(",(SELECT COUNT(*) FROM SERVICO_MANUTENCAO SM WHERE SERV.ID_SERVICO = SM.ID_SERVICO) AS VINCULO ")
 			.append("FROM SERVICO SERV " )
 			.append("INNER JOIN GRUPO_SERVICO GRUP ON GRUP.ID_GRUPO_SERVICO = SERV.ID_GRUPO_SERVICO ")
 			.append("ORDER BY SERV.NOME_SERVICO ")
@@ -44,6 +45,12 @@ public interface ServicoQueries {
 			.append("DESCRICAO = :descricao ,")
 			.append("TEMPO_ESTIMADO = :tempoEstimado ,")
 			.append("ID_GRUPO_SERVICO = :idGrupoServico ")
+			.append("WHERE ID_SERVICO = :idServico ")
+			.toString();
+	
+	public static final String QUERY_ATIVAR_DESATIVAR_SERVICO = new StringBuilder()
+			.append("UPDADE SERVICO SET ")
+			.append("ATIVO = :funcao ")
 			.append("WHERE ID_SERVICO = :idServico ")
 			.toString();
 }

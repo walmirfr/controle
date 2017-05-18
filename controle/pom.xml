@@ -7,8 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>controle Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
 	<properties>
 		<apache.tiles>3.0.7</apache.tiles>
+		<jackson.version>2.6.3</jackson.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -100,9 +102,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.2.Final</version>
 		</dependency>
 
 		<!-- Drive Postgres -->
@@ -119,11 +121,17 @@
 			<version>1.2.17</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<!-- Need this for json to/from object -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>2.5.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 	</dependencies>

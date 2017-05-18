@@ -5,6 +5,9 @@ public class Constants {
 	public static final String SIM = "S";
 	public static final String NAO = "N";
 	
+	public static final String FUNCAO = "funcao";
+	public static final String ATIVAR = "ativar";
+	public static final String DESATIVAR = "desativar";
 	public static final String NOME = "nome";
 	public static final String DESCRICAO = "descricao";
 	public static final String TEMPOESTIMADO = "tempoEstimado";

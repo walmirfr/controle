@@ -10,3 +10,7 @@ function deletarServico(id){
 function carregaLista(){
 	$.get("consultar");
 }
+
+function modalExcluir(id){
+	$("#excluirServico").val(id);
+}

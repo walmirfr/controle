@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -81,6 +82,7 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 			servico.setIdServico(rs.getInt("ID_SERVICO"));
 			servico.setNome(rs.getString("NOME_SERVICO"));
 			servico.setAtivo(Util.getAtivo(rs.getString("ATIVO")));
+			servico.setVinculo(Util.getVinculo(rs.getInt("VINCULO")));
 			GrupoServicoVo grupo = new GrupoServicoVo();
 			grupo.setNome(rs.getString("NOME_GRUPO_SERVICO"));
 			servico.setGrupoServico(grupo);
@@ -110,5 +112,19 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 	public List<ServicoVo> listarServicos(ManutencaoVo manutencao) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Integer ativarDesativarServico(ServicoVo servico, String funcao) throws DataAccessException {
+		StringBuilder sql = new StringBuilder();
+		MapSqlParameterSource parans = new MapSqlParameterSource();
+		
+		parans.addValue(Constants.FUNCAO, servico.getAtivo());
+		parans.addValue(Constants.IDSERVICO, servico.getAtivo());
+		
+		try{
+			return getJdbc().update(sql.toString(), parans);
+		}catch(DataAccessException d){
+			throw d;
+		}
 	}
 }

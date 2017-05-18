@@ -17,4 +17,12 @@ public class Util {
 		}
 		return valor;
 	}
+	
+	public static Boolean getVinculo(Integer vinculo){
+		Boolean valor = false;
+		if(vinculo > 0){
+			valor = true;
+		}
+		return valor;
+	}
 }
