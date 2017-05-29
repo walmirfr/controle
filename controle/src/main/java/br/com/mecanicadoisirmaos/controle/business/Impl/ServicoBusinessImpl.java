@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
 import br.com.mecanicadoisirmaos.controle.dao.ServicoDao;
 import br.com.mecanicadoisirmaos.controle.util.Constants;
-import br.com.mecanicadoisirmaos.controle.util.Util;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
 @Component
@@ -26,8 +25,8 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 		return false;
 	}
 
-	public List<ServicoVo> listarServicos() {
-		return servicoDao.listarServicos();
+	public List<ServicoVo> listarServicos(ServicoVo servico) {
+		return servicoDao.listarServicos(servico);
 	}
 
 	public void deletarServico(ServicoVo servico) {
@@ -49,12 +48,12 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 	public Boolean ativarDesativarServico(ServicoVo servico, String funcao) throws Exception {
 		
 		if(Constants.ATIVAR.equals(funcao)){
-			servico.setAtivo(Util.getAtivo(Constants.SIM));
+			servico.setAtivo(true);
 		}else if(Constants.DESATIVAR.equals(funcao)){
-			servico.setAtivo(Util.getAtivo(Constants.NAO));
+			servico.setAtivo(false);
 		}
 		
-		if(servicoDao.ativarDesativarServico(servico, funcao) > 0){
+		if(servicoDao.ativarDesativarServico(servico) > 0){
 			return true;
 		}
 		return false;

@@ -2,19 +2,19 @@
 	text-align: center;
 }
 
-.header-danger{
+.Excluir{
 	background-color: #d9534f;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.header-warning{
+.Desativar{
 	background-color: #d58512;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.header-success{
+.Ativar{
 	background-color: #449d44;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -26,4 +26,8 @@
 
 .navbar-brand{
 	font-size: 30px;
+}
+
+.obrigatorio{
+	color: red;
 }

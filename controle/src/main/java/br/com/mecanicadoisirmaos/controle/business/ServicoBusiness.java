@@ -10,7 +10,7 @@ public interface ServicoBusiness {
 	
 	public Boolean alterarServico(ServicoVo servico);
 	
-	public List<ServicoVo> listarServicos();
+	public List<ServicoVo> listarServicos(ServicoVo servico);
 
 	public void deletarServico(ServicoVo servico);
 	

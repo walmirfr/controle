@@ -52,9 +52,9 @@ public class ManutencaoController {
 			mv.addObject("listaProprietarios", clienteBusiness.listarClientesPart());
 			mv.addObject("listaProfissionais", clienteBusiness.listarClientesPart());
 			mv.addObject("listaMarcas", marcaBusiness.listarMarcas());
-			mv.addObject("listaModelos", modeloBusiness.listarModelosPorMarca(1));
+//			mv.addObject("listaModelos", modeloBusiness.listarModelosPorMarca(1));
 			mv.addObject("listaGrupos", grupoServicoBusiness.listarGrupoServico());
-			mv.addObject("listaServicos", servicoBusiness.listarServicos());
+			mv.addObject("listaServicos", servicoBusiness.listarServicos(null));
 			mv.addObject("listaProfissionais", profissionalBusiness.listarProfissionais());
 		}catch(Exception e){
 			LOGGER.error("Erro carregar uma lista que compõe a tela de cadastro: "+ e);

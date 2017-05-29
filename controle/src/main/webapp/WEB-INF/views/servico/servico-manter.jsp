@@ -5,14 +5,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div id="page-wrapper">
-		<form:form action="inserirServico" method="post" >
 	<c:if test="${funcao == 'Cadastrar'}">
-		<!--<form action="inserirServico" method="post">-->
+		<form action="inserirServico"  method="post" >
 	</c:if>
 	<c:if test="${funcao == 'Alterar'}">
-		<form action="alterarServico" method="post">
-	   		<form:hidden path="servicoVo.idServico" />
+		<form action="alterarServico" method="post" >
+	   	<form:hidden path="servicoVo.idServico" />
 	</c:if>
+	
 	   <div class="container-fluid">
 		       <!-- Page Heading -->
 			<div class="row">
@@ -32,9 +32,9 @@
 				<div class="col-lg-12">
 					<div class="form-group row">
 						<form:errors path="servico.nome" cssClass="text-warning"></form:errors>
-						<label for="example-text-input" class="col-xs-1 col-form-label">Nome</label>
+						<label for="example-text-input" class="col-xs-1 col-form-label">Nome<span class="obrigatorio">*</span></label>
 						<div class="col-xs-7">
-							<input class="form-control" type="text" name="nome" value="${servicoVo.nome}" placeholder="Nome"/>
+							<input class="form-control" required="required" type="text" name="nome" value="${servicoVo.nome}" placeholder="Nome"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -44,10 +44,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="example-text-input" class="col-xs-1 col-form-label">Grupo Serviço</label>
+						<label for="example-text-input" class="col-xs-1 col-form-label">Grupo Serviço<span class="obrigatorio">*</span></label>
 						<div class="col-xs-3">
-							<select id="selectgrupoServico" class="form-control" name="grupoServico.idGrupoServico" placeholder="Grupo Serviço">
+							<select id="selectgrupoServico" required="required" class="form-control" name="grupoServico.idGrupoServico" placeholder="Grupo Serviço">
 								<option value="#">Selecione um Grupo</option>
+								
 								<c:forEach items="${listaGrupoServico}" var="grupoServico">
 									<c:if test="${grupoServico.idGrupoServico == servicoVo.grupoServico.idGrupoServico}">
 										<option selected value="${grupoServico.idGrupoServico}">${grupoServico.nome}</option>									
@@ -82,7 +83,7 @@
 	<!-- /.row -->
 		</div>
 	<!-- /.container-fluid -->
-	</form:form>
+	</form>
 </div>
 <!-- /#page-wrapper -->
 

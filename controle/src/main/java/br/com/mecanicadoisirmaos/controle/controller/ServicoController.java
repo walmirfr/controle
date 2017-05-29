@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.mecanicadoisirmaos.controle.business.GrupoServicoBusiness;
 import br.com.mecanicadoisirmaos.controle.business.ServicoBusiness;
-import br.com.mecanicadoisirmaos.controle.model.AjaxResponseGrupoServico;
 import br.com.mecanicadoisirmaos.controle.vo.GrupoServicoVo;
 import br.com.mecanicadoisirmaos.controle.vo.ServicoVo;
 
@@ -37,7 +36,7 @@ public class ServicoController {
 	public ModelAndView cadastrarServico(){
 		ModelAndView mv = getRetorno("servico/servico-cadastrar");
 		mv.addObject("listaGrupoServico", listarGrupoServico());
-		mv.addObject("servico", new ServicoVo());
+		mv.addObject("servicoVo", new ServicoVo());
 		mv.addObject("funcao", "Cadastrar");
 		return mv;
 	}
@@ -49,12 +48,11 @@ public class ServicoController {
 	}
 	
 	@RequestMapping("/alterarServico")
-	public ModelAndView alterarServico(ServicoVo servico){
-		System.out.println("");
+	public ModelAndView alterarServico(ServicoVo servico, final RedirectAttributes redirectAtributes){
 		if(servicoBusiness.alterarServico(servico)){
-			return listarServicos();			
+			redirectAtributes.addFlashAttribute("sucesso", "Serviço alterado com sucesso!");
 		}
-		return cadastrarServico();
+		return new ModelAndView("redirect:consultar");
 	}
 	
 	@RequestMapping("/visualizar")
@@ -70,22 +68,42 @@ public class ServicoController {
 	@RequestMapping("/consultar")
 	public ModelAndView listarServicos(){
 		ModelAndView mv = getRetorno("servico/servico-consultar");
-		mv.addObject("listaServicos", servicoBusiness.listarServicos());
+		mv.addObject("listaServicos", carregarServicos(null));
 		return mv;
+	}
+	
+	@RequestMapping("/filtrar")
+	public ModelAndView listarServicos(ServicoVo servico){
+		List<ServicoVo> listaServicos = null;
+		ModelAndView mv = getRetorno("servico/servico-consultar");
+		if(servico.getNome()!= null){
+			listaServicos = carregarServicos(servico);
+		}else{
+			listaServicos = carregarServicos(null);
+		}
+		mv.addObject("listaServicos", listaServicos);
+		mv.addObject("servicoVo", servico);
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/carregarServicos")
+	public List<ServicoVo> carregarServicos(ServicoVo servico){
+		return servicoBusiness.listarServicos(servico);
 	}
 	
 	/*AÇÕES*/
 	@RequestMapping("/inserirServico")
 	public ModelAndView inserirServico(@Valid ServicoVo servico, final BindingResult result, final RedirectAttributes redirectAtributes){
-		if(result.hasErrors()){
-			System.out.println(result.getFieldErrors());
+		/*if(result.hasErrors()){
 			redirectAtributes.addFlashAttribute("org.springframework.validation.BindingResult.register", result);
 			redirectAtributes.addFlashAttribute("errors", result);
 			redirectAtributes.addFlashAttribute("servico", servico);
 			return new ModelAndView("redirect:cadastrar");
+		}*/
+		if(servicoBusiness.inserirServico(servico)){
+			redirectAtributes.addFlashAttribute("sucesso", "O Serviço "+ servico.getNome() +" foi cadastrado com sucesso!");
 		}
-		redirectAtributes.addFlashAttribute("sucesso", "Serviço "+ servico.getNome() +" foi cadastrado com sucesso!");
-		servicoBusiness.inserirServico(servico);
 		return new ModelAndView("redirect:consultar");
 	}
 	
@@ -97,9 +115,13 @@ public class ServicoController {
 	}
 	
 	@RequestMapping("/ativarDesativarServico")
-	public ModelAndView ativarDesativarServico(ServicoVo servico, String funcao){
+	public ModelAndView ativarDesativarServico(ServicoVo servico, String funcao, RedirectAttributes redirectAtributes){
 		try{
-			servicoBusiness.ativarDesativarServico(servico, funcao);
+			if(servicoBusiness.ativarDesativarServico(servico, funcao)){
+				redirectAtributes.addFlashAttribute("sucesso", "Sucesso ao " + funcao + " o Serviço" );				
+			}else{
+				redirectAtributes.addFlashAttribute("error", "Falha ao tentar " + funcao + " o Serviço");
+			}
 		}catch(Exception e){
 			LOGGER.error("Erro ao ativar desativar o Servico: " + e);
 		}

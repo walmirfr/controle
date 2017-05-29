@@ -42,7 +42,7 @@ public class VeiculoController {
 		ModelAndView mv = getRetorno("veiculo/veiculo-cadastrar");
 		mv.addObject("funcao", "Cadastrar");
 		try{
-			mv.addObject("listaModelos",listarModelosPorMarca(1));
+			//mv.addObject("listaModelos",listarModelosPorMarca(1));
 			mv.addObject("listaMarcas", listarMarcas());
 			mv.addObject("listaClientes", listarClientesPart());
 		}catch(Exception e){
@@ -95,9 +95,34 @@ public class VeiculoController {
 		return null;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/listarModelosPorMarca")
-	private @ResponseBody List<ModeloVo> listarModelosPorMarca(Integer idMarca) throws Exception{
+	private List<ModeloVo> listarModelosPorMarca(Integer idMarca) throws Exception{
 		return modeloBusiness.listarModelosPorMarca(idMarca);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/carregarListaMarcas")
+	private List<MarcaVo> carregarListaMarcas(){
+		 List<MarcaVo> marcas = null;
+		try {
+			marcas = listarMarcas();
+		} catch (Exception e) {
+			LOGGER.error("Erro ao consultar Marca: "+ e);
+		}
+		return marcas;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/carregarListaModelosPorMarca")
+	private List<ModeloVo> carregarListaModelosPorMarca(Integer idMarca){
+		 List<ModeloVo> modelos = null;
+		try {
+			modelos = listarModelosPorMarca(idMarca);
+		} catch (Exception e) {
+			LOGGER.error("Erro ao consultar Marca: "+ e);
+		}
+		return modelos;
 	}
 	
 	/*Funções*/

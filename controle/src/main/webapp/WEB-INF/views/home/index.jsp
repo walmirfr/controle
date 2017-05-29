@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
-						<a href="manutencao-consultar.html">
+						<a href="../manutencao/consultar">
 							<div class="panel panel-primary">
 								<div class="panel-heading">
 									<div class="row">
@@ -39,7 +39,7 @@
 						</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
-						<a href="cliente-consultar.html">
+						<a href="../cliente/consultar">
 							<div class="panel panel-green">
 								<div class="panel-heading">
 									<div class="row">
@@ -61,7 +61,7 @@
 						</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
-						<a href="veiculo-consultar.html">
+						<a href="../veiculo/consultar">
 							<div class="panel panel-yellow">
 								<div class="panel-heading">
 									<div class="row">
@@ -83,7 +83,7 @@
 						</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
-						<a href="servico-consultar.html">
+						<a href="../servico/consultar">
 							<div class="panel panel-red">
 								<div class="panel-heading">
 									<div class="row">

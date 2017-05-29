@@ -48,9 +48,21 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 		return getJdbc().queryForObject(sql.toString(), parans, new ServicoRowMapper());
 	}
 
-	public List<ServicoVo> listarServicos() {
-		String sql = QUERY_LISTAR_SERVICOS;
-		return getJdbc().query(sql, new ServicoListaRowMapper());
+	public List<ServicoVo> listarServicos(ServicoVo servico) {
+		StringBuilder sql = new StringBuilder(QUERY_LISTAR_SERVICOS);
+		MapSqlParameterSource parans = new MapSqlParameterSource();
+		
+		if(servico != null){
+			sql.append("WHERE NOME_SERVICO LIKE :nome ");
+			parans.addValue(Constants.NOME, "%"+servico.getNome()+"%");
+		}
+		sql.append("ORDER BY SERV.NOME_SERVICO ");
+		
+		try{
+			return getJdbc().query(sql.toString(), parans, new ServicoListaRowMapper());
+		}catch(DataAccessException d){
+			throw d;
+		}
 	}
 
 	public Integer alterarServico(ServicoVo servico) {
@@ -73,6 +85,20 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 		parans.addValue(Constants.IDSERVICO, idServico);
 		
 		return getJdbc().update(sql, parans);
+	}
+	
+	public Integer ativarDesativarServico(ServicoVo servico) throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_ATIVAR_DESATIVAR_SERVICO);
+		MapSqlParameterSource parans = new MapSqlParameterSource();
+		
+		parans.addValue(Constants.FUNCAO, Util.getAtivo(servico.getAtivo()));
+		parans.addValue(Constants.IDSERVICO, servico.getIdServico());
+		
+		try{
+			return getJdbc().update(sql.toString(), parans);
+		}catch(DataAccessException d){
+			throw d;
+		}
 	}
 	
 	public static class ServicoListaRowMapper implements RowMapper<ServicoVo>
@@ -112,19 +138,5 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 	public List<ServicoVo> listarServicos(ManutencaoVo manutencao) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public Integer ativarDesativarServico(ServicoVo servico, String funcao) throws DataAccessException {
-		StringBuilder sql = new StringBuilder();
-		MapSqlParameterSource parans = new MapSqlParameterSource();
-		
-		parans.addValue(Constants.FUNCAO, servico.getAtivo());
-		parans.addValue(Constants.IDSERVICO, servico.getAtivo());
-		
-		try{
-			return getJdbc().update(sql.toString(), parans);
-		}catch(DataAccessException d){
-			throw d;
-		}
 	}
 }

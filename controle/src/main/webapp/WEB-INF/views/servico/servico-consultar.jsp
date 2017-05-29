@@ -6,7 +6,6 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-				
 				<c:if test="${sucesso != null}">
 					<div class="alert alert-info center" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -37,11 +36,11 @@
 							<h2 style="margin-top: 0">Lista de Serviços</h2>
 						</div>
 						<div class="col-lg-6">
-							<form method="post" action="#">
+							<form method="post" action="filtrar">
 								<div class="input-group">
-									<input name="filtro" placeholder="Filtro pelo Nome" class="form-control input-lg">
+									<input name="nome" value="${servicoVo.nome}" id="filtro" placeholder="Filtro pelo Nome" class="form-control input-lg">
 									<span class="input-group-btn"> 
-										<button class="btn btn-lg btn-primary" type="button">Filtrar</button> 
+										<button class="btn btn-lg btn-primary" type="submit">Filtrar</button> 
 									</span>
 								</div>
 							</form>
@@ -60,31 +59,31 @@
                                 </thead>
                                 <tbody>
                                 	<c:forEach items="${listaServicos}" var="servico">
-	                                    <tr>
-	                                        <td style="text-align: center;"><a href="#">${servico.nome }</a></td>
-	                                        <td style="text-align: center;">${servico.grupoServico.nome }</td>
-											<td style="text-align: center;">
+	                                    <tr align="center">
+	                                        <td><a href="#">${servico.nome }</a></td>
+	                                        <td>${servico.grupoServico.nome }</td>
+											<td>
 												<a href="visualizar?idServico=${servico.idServico}" class="btn btn-lg btn-primary">
 													<i class="fa fa-refresh"></i>
 												</a>
 											</td>
-											<td style="text-align: center;">
+											<td>
 												<c:if test="${servico.ativo eq true && servico.vinculo eq false}">
-													<a href="#" onclick="modalExcluir(${servico.idServico})" data-target="#modalExcluir" data-toggle="modal" class="btn btn-lg btn-danger">
+													<a href="#" onclick="modalAcao(${servico.idServico},'Excluir')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-danger">
 														<i class="fa">
 															Excluir
 														</i>
 													</a>
 												</c:if>
 												<c:if test="${servico.ativo eq true && servico.vinculo eq true}">
-													<a href="" data-target="#modalDesativar" data-toggle="modal" class="btn btn-lg btn-warning">
+													<a href="" onclick="modalAtivarDesativar(${servico.idServico})" data-target="#modalDesativar" data-toggle="modal" class="btn btn-lg btn-warning">
 														<i class="fa">
 															Desativar
 														</i>
 													</a>
 												</c:if>
 												<c:if test="${servico.ativo eq false}">
-													<a href="" data-target="#modalAtivar" data-toggle="modal" class="btn btn-lg btn-success">
+													<a href="" onclick="modalAcao(${servico.idServico},'Ativar')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-success">
 														<i class="fa">
 															Ativar
 														</i>
@@ -142,7 +141,6 @@
 			</button>
 		</h2>
 	  </div>
-		<form action="inserirGrupoServico" method="post">
 			<div class="modal-body center">
 				<h3>
 			        <p>O Serviço será desativado!</p>
@@ -150,10 +148,9 @@
 				</h3>
 		    </div>
 		  <div class="modal-footer">
-			<button type="submit" class="btn btn-lg btn-warning">Sim</button>
+			<button type="button" onclick="ativarDesativarServico('desativar')" data-dismiss="modal" class="btn btn-lg btn-warning">Sim</button>
 			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
 		  </div>
-		</form>
 	</div>
   </div>
 </div>
@@ -168,7 +165,6 @@
 			</button>
 		</h2>
 	  </div>
-		<form action="inserirGrupoServico" method="post">
 			<div class="modal-body center">
 				<h3>
 			        <p>O Serviço <b>Ponteira</b> será ativado!</p>
@@ -176,11 +172,40 @@
 				</h3>
 		    </div>
 		  <div class="modal-footer">
-			<button type="submit" class="btn btn-lg btn-success">Sim</button>
+			<button type="button" onclick="ativarDesativarServico('ativar')" data-dismiss="modal" class="btn btn-lg btn-success">Sim</button>
+			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
+		  </div>
+	</div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalAcoes" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header header-danger">
+		<h2 class="modal-title" id="tituloModalAcoes"><span></span>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		</h2>
+	  </div>
+		<form action="#" method="post" id="formAcoes">
+			<input type="hidden" name="idServico" id="idServicoAcao"/>
+			<input type="hidden" name="funcao" id="idFuncaoAcao"/>
+			<div class="modal-body center">
+				<h3>
+			        <p id="textoAcao"></p>
+			        <p id="textoAcao2"></p>
+				</h3>
+		    </div>
+		  <div class="modal-footer">
+			<button id="btAcao" type="submit" class="btn">Sim</button>
 			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
 		  </div>
 		</form>
 	</div>
   </div>
 </div>
+
         <script src="<c:url value="/static/js/servico/servico-consultar.js" />" type="text/javascript"></script>

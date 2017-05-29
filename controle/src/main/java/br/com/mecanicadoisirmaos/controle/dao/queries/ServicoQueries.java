@@ -28,7 +28,6 @@ public interface ServicoQueries {
 			.append(",(SELECT COUNT(*) FROM SERVICO_MANUTENCAO SM WHERE SERV.ID_SERVICO = SM.ID_SERVICO) AS VINCULO ")
 			.append("FROM SERVICO SERV " )
 			.append("INNER JOIN GRUPO_SERVICO GRUP ON GRUP.ID_GRUPO_SERVICO = SERV.ID_GRUPO_SERVICO ")
-			.append("ORDER BY SERV.NOME_SERVICO ")
 			.toString();
 	
 	public static final String QUERY_LISTAR_SERVICOS_POR_MANUTENCAO = new StringBuilder()
@@ -49,7 +48,7 @@ public interface ServicoQueries {
 			.toString();
 	
 	public static final String QUERY_ATIVAR_DESATIVAR_SERVICO = new StringBuilder()
-			.append("UPDADE SERVICO SET ")
+			.append("UPDATE SERVICO SET ")
 			.append("ATIVO = :funcao ")
 			.append("WHERE ID_SERVICO = :idServico ")
 			.toString();

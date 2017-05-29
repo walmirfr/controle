@@ -20,7 +20,7 @@ public interface ServicoDao {
 	
 	public ServicoVo consultarServicoPorId(Integer idServico);
 	
-	public List<ServicoVo> listarServicos();
+	public List<ServicoVo> listarServicos(ServicoVo servico);
 	
 	public List<ServicoVo> listarServicos(ManutencaoVo manutencao);
 	
@@ -28,5 +28,5 @@ public interface ServicoDao {
 	
 	public Integer deletarServicoPorId(Integer idServico);
 	
-	public Integer ativarDesativarServico(ServicoVo servico, String funcao) throws DataAccessException;
+	public Integer ativarDesativarServico(ServicoVo servico) throws DataAccessException;
 }

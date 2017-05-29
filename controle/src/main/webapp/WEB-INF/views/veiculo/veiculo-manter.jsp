@@ -130,12 +130,12 @@
 		  <div class="modal-body">
 			<div class="form-group">
 				<label for="recipient-name" class="control-label">Nome da Marca</label>
-				<input class="form-control" type="text" name="nome" placeholder="Nome da Marca"/>
+				<input class="form-control" id="nomeMarca" type="text" name="nome" placeholder="Nome da Marca"/>
 			</div>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			<button type="submit" class="btn btn-primary">Salvar Marca</button>
+			<button type="button" data-dismiss="modal" onclick="inserirMarca()" class="btn btn-primary">Salvar Marca</button>
 		  </div>
 		</form>
 	</div>
