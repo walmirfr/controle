@@ -26,4 +26,12 @@ public class VeiculoBusinessImpl implements VeiculoBusiness{
 		return veiculoDao.listarVeiculos();
 	}
 
+	public Integer consultarQuantidadeVeiculosCadastrados() throws Exception {
+		return veiculoDao.consultarQuantidadeVeiculosCadastrados();
+	}
+
+	public List<VeiculoVo> consultarVeiculoPorProprietario(Integer idPessoa) throws Exception {
+		return veiculoDao.consultarVeiculoPorProprietario(idPessoa);
+	}
+
 }

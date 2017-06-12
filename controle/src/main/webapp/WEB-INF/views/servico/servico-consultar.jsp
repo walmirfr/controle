@@ -6,14 +6,6 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-				<c:if test="${sucesso != null}">
-					<div class="alert alert-info center" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<span> ${sucesso}</span>
-					</div>
-				</c:if>
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -69,21 +61,21 @@
 											</td>
 											<td>
 												<c:if test="${servico.ativo eq true && servico.vinculo eq false}">
-													<a href="#" onclick="modalAcao(${servico.idServico},'Excluir')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-danger">
+													<a href="#" onclick="modalAcao(${servico.idServico},'Excluir', 'Serviço')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-danger">
 														<i class="fa">
 															Excluir
 														</i>
 													</a>
 												</c:if>
 												<c:if test="${servico.ativo eq true && servico.vinculo eq true}">
-													<a href="" onclick="modalAtivarDesativar(${servico.idServico})" data-target="#modalDesativar" data-toggle="modal" class="btn btn-lg btn-warning">
+													<a href="" onclick="modalAcao(${servico.idServico},'Desativar', 'Serviço')" data-target="#modalDesativar" data-toggle="modal" class="btn btn-lg btn-warning">
 														<i class="fa">
 															Desativar
 														</i>
 													</a>
 												</c:if>
 												<c:if test="${servico.ativo eq false}">
-													<a href="" onclick="modalAcao(${servico.idServico},'Ativar')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-success">
+													<a href="" onclick="modalAcao(${servico.idServico},'Ativar', 'Serviço')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-success">
 														<i class="fa">
 															Ativar
 														</i>
@@ -103,109 +95,5 @@
 
         </div>
         <!-- /#page-wrapper -->
-
-<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-header header-danger">
-		<h2 class="modal-title">Excluir
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		</h2>
-	  </div>
-		<form action="deletarServico" method="post">
-			<input type="hidden" name="idServico" id="excluirServico"/>
-			<div class="modal-body center">
-				<h3>
-			        <p>O Serviço será excluido!</p>
-			        <p>Tem certeza que deseja excluir?</p>
-				</h3>
-		    </div>
-		  <div class="modal-footer">
-			<button type="submit" class="btn btn-lg btn-danger">Sim</button>
-			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
-		  </div>
-		</form>
-	</div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalDesativar" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-header header-warning">
-		<h2 class="modal-title">Desativar
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		</h2>
-	  </div>
-			<div class="modal-body center">
-				<h3>
-			        <p>O Serviço será desativado!</p>
-			        <p>Tem certeza que deseja desativar?</p>
-				</h3>
-		    </div>
-		  <div class="modal-footer">
-			<button type="button" onclick="ativarDesativarServico('desativar')" data-dismiss="modal" class="btn btn-lg btn-warning">Sim</button>
-			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
-		  </div>
-	</div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalAtivar" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-header header-success">
-		<h2 class="modal-title">Ativar
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		</h2>
-	  </div>
-			<div class="modal-body center">
-				<h3>
-			        <p>O Serviço <b>Ponteira</b> será ativado!</p>
-			        <p>Tem certeza que deseja ativar?</p>
-				</h3>
-		    </div>
-		  <div class="modal-footer">
-			<button type="button" onclick="ativarDesativarServico('ativar')" data-dismiss="modal" class="btn btn-lg btn-success">Sim</button>
-			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
-		  </div>
-	</div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="modalAcoes" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-header header-danger">
-		<h2 class="modal-title" id="tituloModalAcoes"><span></span>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		</h2>
-	  </div>
-		<form action="#" method="post" id="formAcoes">
-			<input type="hidden" name="idServico" id="idServicoAcao"/>
-			<input type="hidden" name="funcao" id="idFuncaoAcao"/>
-			<div class="modal-body center">
-				<h3>
-			        <p id="textoAcao"></p>
-			        <p id="textoAcao2"></p>
-				</h3>
-		    </div>
-		  <div class="modal-footer">
-			<button id="btAcao" type="submit" class="btn">Sim</button>
-			<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
-		  </div>
-		</form>
-	</div>
-  </div>
-</div>
 
         <script src="<c:url value="/static/js/servico/servico-consultar.js" />" type="text/javascript"></script>

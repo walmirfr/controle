@@ -78,17 +78,12 @@
 						<div class="form-group row">
 							<label class="col-xs-2 col-form-label">Tipo de Proprietário</label>
 							<label class="radio-inline col-xs-1">
-								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Cliente
+								<input type="radio" name="tipo" id="optionsRadiosInline1" value="C" checked>Cliente
 							</label>
 							<label class="radio-inline col-xs-1">
-								<input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Empresa
+								<input type="radio" name="tipo" id="optionsRadiosInline2" value="E">Empresa
 							</label>
-							<label for="example-text-input" class="col-xs-2 col-form-label">Filtro Proprietário</label>
-							<div class="col-xs-3">
-								<input class="form-control" type="text" name="filtro" placeholder="Filtro por Nome"/>
-							</div>
-						</div>
-						<div class="form-group row">
+							
 							<label for="example-text-input" class="col-xs-1 col-form-label">Proprietário</label>
 							<div class="col-xs-3">
 								<select class="form-control" name="proprietario.idPessoa" >
@@ -99,7 +94,6 @@
 								</select>
 							</div>
 						</div>
-						
 						<div class="form-group text-right">
 							<a href="../veiculo/consultar" class="btn btn-default" type="button">Cancelar</a>
 							<input class="btn btn-default" name="limpar" type="button" value="Limpar"/>
@@ -154,17 +148,17 @@
 			</button>
 		</h4>
 	  </div>
-		<form action="inserirModelo" method="post">
+		<form action="inserirModelo" id="formModelo" method="post">
 			<input type="hidden" name="marca.idMarca" id="marcaDoModelo">
 		  <div class="modal-body">
 			<div class="form-group">
 				<label for="recipient-name" class="control-label">Nome do Modelo</label>
-				<input class="form-control" type="text" name="nome" placeholder="Nome do Modelo"/>
+				<input class="form-control" id="nomeModelo" type="text" name="nome" placeholder="Nome do Modelo"/>
 			</div>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			<button type="submit" class="btn btn-primary">Salvar Modelo</button>
+			<button type="button" onclick="inserirModelo()" data-dismiss="modal" class="btn btn-primary">Salvar Modelo</button>
 		  </div>
 		</form>
 	</div>

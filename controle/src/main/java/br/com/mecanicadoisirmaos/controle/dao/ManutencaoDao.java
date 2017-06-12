@@ -17,4 +17,6 @@ public interface ManutencaoDao {
 	public Integer inserirProfissionalManutencao(ProfissionalVo profissional, Integer idManutencao) throws DataAccessException;
 	
 	public List<ManutencaoVo> listarManutencoes () throws DataAccessException;
+
+	public Integer consultarQuantidadeManutencoesCadastradas() throws DataAccessException;
 }

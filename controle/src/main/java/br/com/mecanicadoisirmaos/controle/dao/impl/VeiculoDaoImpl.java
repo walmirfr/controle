@@ -76,4 +76,26 @@ public class VeiculoDaoImpl extends AbstractDao implements VeiculoDao, VeiculoQu
 			return veiculo;
 		}
 	}
+
+	public Integer consultarQuantidadeVeiculosCadastrados() throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_CONSULTAR_QUANTIDADE_VEICULOS);
+		try{
+			return getJdbc().queryForObject(sql.toString(), new MapSqlParameterSource(), Integer.class);
+		}catch(DataAccessException d){
+			throw d;
+		}
+	}
+
+	public List<VeiculoVo> consultarVeiculoPorProprietario(Integer idPessoa) throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_CONSULTAR_VEICULO_POR_PROPRIETARIO);
+		MapSqlParameterSource parans = new MapSqlParameterSource();
+		
+		parans.addValue(Constants.IDPESSOA, idPessoa);
+		
+		try{
+			return getJdbc().query(sql.toString(), parans, new VeiculoPartRowMapper());
+		}catch(DataAccessException d){
+			throw d;
+		}
+	}
 }

@@ -31,3 +31,17 @@
 .obrigatorio{
 	color: red;
 }
+
+.meio{
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+body{
+	background-color: white;
+}
+
+.msg{
+	width: 100%;
+	background-color: white;
+}

@@ -120,3 +120,70 @@ function montarSelectProfissional(){
 		}
 	});
 }
+
+
+function modalAcao(id, acao, objeto){
+	$('#tituloModalAcoes>span').text(acao);
+	$('#tituloModalAcoes>span').closest('div').attr('class', 'modal-header ' + acao);
+	corpoAcao(acao, objeto);
+	$('#idFuncaoAcao').val(acao);
+	$('#idAcao').val(id);
+}
+
+function corpoAcao(acao, objeto){
+	var texto1, texto2, classe, funcao = '';
+	switch(acao){
+		case 'Ativar':
+			texto1 = 'O '+objeto+' será ativado!';
+			texto2 = 'Tem certeza que deseja ativar?';
+			classe = 'btn btn-lg btn-success';
+			funcao = 'ativarDesativar'+objeto;
+			break;
+		case 'Desativar':
+			texto1 = 'O '+objeto+' será desativado!';
+			texto2 = 'Tem certeza que deseja desativar?';
+			classe = 'btn btn-lg btn-warning';
+			funcao = 'ativarDesativar'+objeto;
+			break;
+		case 'Excluir':
+			texto1 = 'O '+objeto+' será excluido!';
+			texto2 = 'Tem certeza que deseja excluir?';
+			classe = 'btn btn-lg btn-danger';
+			funcao = 'excluir'+removerAcentos(objeto);
+			break;
+		default: break;
+	}
+	$('#textoAcao').text(texto1);
+	$('#textoAcao2').text(texto2);
+	$('#btAcao').attr('class', classe);
+	$('#formAcoes').attr('action', funcao);
+}
+
+/**
+ * Remove acentos de caracteres
+ * @param  {String} stringComAcento [string que contem os acentos]
+ * @return {String}                 [string sem acentos]
+ */
+function removerAcentos( newStringComAcento ) {
+  var string = newStringComAcento;
+	var mapaAcentosHex 	= {
+		a : /[\xE0-\xE6]/g,
+		e : /[\xE8-\xEB]/g,
+		i : /[\xEC-\xEF]/g,
+		o : /[\xF2-\xF6]/g,
+		u : /[\xF9-\xFC]/g,
+		c : /\xE7/g,
+		n : /\xF1/g
+	};
+
+	for ( var letra in mapaAcentosHex ) {
+		var expressaoRegular = mapaAcentosHex[letra];
+		string = string.replace( expressaoRegular, letra );
+	}
+
+	return string;
+}
+
+function removerLinha(ref){
+	ref.closest('tr').remove();
+}

@@ -30,6 +30,14 @@
 		<put-attribute name="title" value="Consulta de Cliente"/>
 		<put-attribute name="main" value="/WEB-INF/views/cliente/cliente-consultar.jsp" />
 	</definition>
+	<definition name="cliente/cliente-alterar" extends="comum">
+		<put-attribute name="title" value="Alteração de Cliente"/>
+		<put-attribute name="main" value="/WEB-INF/views/cliente/cliente-manter.jsp" />
+	</definition>
+	<definition name="cliente/cliente-visualizar" extends="comum">
+		<put-attribute name="title" value="Visualização de Cliente"/>
+		<put-attribute name="main" value="/WEB-INF/views/cliente/cliente-manter.jsp" />
+	</definition>
 	
 	<!-- EMPRESA -->
 	<definition name="empresa/empresa-cadastrar" extends="comum">
@@ -39,6 +47,14 @@
 	<definition name="empresa/empresa-consultar" extends="comum">
 		<put-attribute name="title" value="Consulta de Empresa"/>
 		<put-attribute name="main" value="/WEB-INF/views/empresa/empresa-consultar.jsp" />
+	</definition>
+	<definition name="empresa/empresa-alterar" extends="comum">
+		<put-attribute name="title" value="Alteração de Empresa"/>
+		<put-attribute name="main" value="/WEB-INF/views/empresa/empresa-manter.jsp" />
+	</definition>
+	<definition name="empresa/empresa-visualizar" extends="comum">
+		<put-attribute name="title" value="Visualização da Empresa"/>
+		<put-attribute name="main" value="/WEB-INF/views/empresa/empresa-manter.jsp" />
 	</definition>
 	
 	<!-- MANUTENCAO -->
@@ -70,7 +86,14 @@
 		<put-attribute name="title" value="Consulta Profissional"/>
 		<put-attribute name="main" value="/WEB-INF/views/profissional/profissional-consultar.jsp" />
 	</definition>
-	
+	<definition name="profissional/profissional-alterar" extends="comum">
+		<put-attribute name="title" value="Alteração do Profissional"/>
+		<put-attribute name="main" value="/WEB-INF/views/profissional/profissional-manter.jsp" />
+	</definition>
+	<definition name="profissional/profissional-visualizar" extends="comum">
+		<put-attribute name="title" value="Visualização do Profissional"/>
+		<put-attribute name="main" value="/WEB-INF/views/profissional/profissional-manter.jsp" />
+	</definition>
 	<!-- VEICULO -->
 	<definition name="veiculo/veiculo-cadastrar" extends="comum">
 		<put-attribute name="title" value="Cadastro de Veiculo"/>

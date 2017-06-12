@@ -115,4 +115,13 @@ public class ManutencaoDaoImpl extends AbstractDao implements ManutencaoDao, Man
 			return manutencao;
 		}
 	}
+
+	public Integer consultarQuantidadeManutencoesCadastradas() throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_CONSULTAR_QUANTIDADE_MANUTENCOES);
+		try{
+			return getJdbc().queryForObject(sql.toString(), new MapSqlParameterSource(), Integer.class);
+		}catch(DataAccessException d){
+			throw d;
+		}
+	}
 }

@@ -17,4 +17,6 @@ public interface ServicoBusiness {
 	public ServicoVo consultarServicoPorId(Integer idServico);
 	
 	public Boolean ativarDesativarServico(ServicoVo servico, String funcao) throws Exception;
+	
+	public Integer consultarQuantidadeServicosCadastrados() throws Exception;
 }

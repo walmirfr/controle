@@ -9,6 +9,7 @@ public class Constants {
 	public static final String ATIVAR = "Ativar";
 	public static final String DESATIVAR = "Desativar";
 	public static final String NOME = "nome";
+	public static final String SEXO = "sexo";
 	public static final String DESCRICAO = "descricao";
 	public static final String TEMPOESTIMADO = "tempoEstimado";
 	public static final String ATIVO = "ativo";

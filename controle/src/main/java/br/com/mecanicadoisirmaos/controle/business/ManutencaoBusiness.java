@@ -9,4 +9,6 @@ public interface ManutencaoBusiness {
 	public Boolean inserirManutencao(ManutencaoVo manutencao) throws Exception;
 	
 	public List<ManutencaoVo> listarManutencoes() throws Exception;
+
+	public Integer consultarQuantidadeManutencoesCadastradas() throws Exception;
 }

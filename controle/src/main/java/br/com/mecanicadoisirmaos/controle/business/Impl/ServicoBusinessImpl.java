@@ -58,4 +58,8 @@ public class ServicoBusinessImpl implements ServicoBusiness {
 		}
 		return false;
 	}
+
+	public Integer consultarQuantidadeServicosCadastrados() throws Exception {
+		return servicoDao.consultarQuantidadeServicosCadastrados();
+	}
 }

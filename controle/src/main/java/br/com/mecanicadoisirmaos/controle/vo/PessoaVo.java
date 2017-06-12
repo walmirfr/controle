@@ -17,6 +17,8 @@ public class PessoaVo {
 	private String senha;
 	private Boolean ativo;
 	private String tipoPessoa;
+	private Boolean vinculo;
+	
 	private EnderecoVo endereco;
 	private TelefoneVo telefone;
 	private List<TelefoneVo> listaTelefones;
@@ -145,5 +147,19 @@ public class PessoaVo {
 	 */
 	public void setTelefone(TelefoneVo telefone) {
 		this.telefone = telefone;
+	}
+	/**
+	 * Responsável por retornar o atributo vinculo
+	 * @return o vinculo
+	 */
+	public Boolean getVinculo() {
+		return vinculo;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo vinculo
+	 * @param vinculo para o atributo vinculo
+	 */
+	public void setVinculo(Boolean vinculo) {
+		this.vinculo = vinculo;
 	}
 }

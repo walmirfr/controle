@@ -9,4 +9,8 @@ public interface VeiculoBusiness {
 	public Boolean inserirVeiculo(VeiculoVo veiculo) throws Exception;
 	
 	public List<VeiculoVo> listarVeiculosPart() throws Exception;
+
+	public Integer consultarQuantidadeVeiculosCadastrados() throws Exception;
+
+	public List<VeiculoVo> consultarVeiculoPorProprietario(Integer idPessoa) throws Exception;
 }

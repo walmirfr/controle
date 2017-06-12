@@ -16,4 +16,12 @@ public interface ClienteQueries {
 			.append("INNER JOIN PESSOA_FISICA PF ON P.ID_PESSOA = PF.ID_PESSOA ")
 			.append("WHERE PF.TIPO_PESSOA_FISICA = 'C' ")
 			.toString();
+	
+	public static final String QUERY_CONSULTAR_QUANTIDADE_CLIENTES = new StringBuilder()
+			.append("SELECT COUNT(PF.*) AS QNT ")
+			.append("FROM PESSOA_FISICA PF ")
+			.append("INNER JOIN PESSOA P ON P.ID_PESSOA = PF.ID_PESSOA ")
+			.append("WHERE PF.TIPO_PESSOA_FISICA = 'C' ")
+			.append("AND P.ATIVO = 'S' ")
+			.toString();
 }

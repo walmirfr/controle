@@ -27,11 +27,11 @@
 							<h2 style="margin-top: 0">Lista de Clientes</h2>
 						</div>
 						<div class="col-lg-6">
-							<form method="post" action="#">
+							<form method="post" action="filtrar">
 								<div class="input-group">
-									<input name="filtro" placeholder="Filtro pelo Nome" class="form-control">
+									<input name="nome" value="${clienteVo.nome}" id="filtro"  placeholder="Filtro pelo Nome" class="form-control">
 									<span class="input-group-btn"> 
-										<button class="btn btn-primary" type="button">Filtrar</button> 
+										<button class="btn btn-primary" type="submit">Filtrar</button> 
 									</span>
 								</div>
 							</form>
@@ -42,28 +42,66 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center;">Nome</th>
-                                        <th style="text-align: center;">E-mail</th>
-                                        <th style="text-align: center;">Telefone</th>
-										<th style="text-align: center;">Alterar</th>
-										<th style="text-align: center;">Excluir</th>
+                                        <th class="center">Nome</th>
+                                        <th class="center">E-mail</th>
+                                        <th class="center">Telefone</th>
+										<th class="center">Alterar</th>
+										<th class="center">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:if test="${listaClientes.size() == 0 && clienteVo.nome == null}">
+                                		<tr align="center">
+                                			<td colspan="5">
+                                				<h3>Nenhum Cliente Cadastrado!</h3>
+                                			</td>
+                                		</tr>
+                                	</c:if>
+                                	<c:if test="${listaClientes.size() == 0 && clienteVo.nome != null}">
+                                		<tr align="center">
+                                			<td colspan="5">
+                                				<h3>Nenhum Cliente encontrado com o Filtro informado!</h3>
+                                			</td>
+                                		</tr>
+                                	</c:if>
                                 	<c:forEach items="${listaClientes}" var="cliente">
 	                                    <tr>
-	                                        <td><a href="#"> ${cliente.nome }</a></td>
-	                                        <td>${cliente.email }</td>
-	                                        <td class="center">${cliente.telefone.telefone }</td>
-											<td class="center">
-												<a href="#" class="btn btn-primary">
+	                                        <td class="meio">
+	                                        	<a href="visualizar?idPessoa=${cliente.idPessoa}"> ${cliente.nome }</a>
+                                        	</td>
+	                                        <td class="meio">${cliente.email }</td>
+	                                        <td class="meio">
+	                                        	<c:forEach items="${cliente.listaTelefones}" end="1" var="telefone">
+													(${telefone.dd}) ${telefone.numero} <br>
+												</c:forEach>
+                                        	</td>
+											<td class="meio">
+												<a href="visualizarAlterar?idPessoa=${cliente.idPessoa}" class="btn btn-lg btn-primary">
 													<i class="fa fa-refresh"></i>
 												</a>
 											</td>
-											<td class="center">
-												<a href="#" class="btn btn-danger">
-													<i class="fa fa-remove"></i>
-												</a>
+											<td class="meio">
+												<c:if test="${cliente.ativo eq true && cliente.vinculo eq false}">
+													<a href="#" onclick="modalAcao(${cliente.idPessoa},'Excluir', 'Cliente')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-danger">
+														<i class="fa">
+															Excluir
+														</i>
+													</a>
+												</c:if>
+												<c:if test="${cliente.ativo eq true && cliente.vinculo eq true}">
+													<a href="" onclick="modalAcao(${cliente.idPessoa},'Desativar', 'Cliente')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-warning">
+														<i class="fa">
+															Desativar
+														</i>
+													</a>
+												</c:if>
+												<c:if test="${cliente.ativo eq false}">
+													<a href="" onclick="modalAcao(${cliente.idPessoa},'Ativar', 'Cliente')" data-target="#modalAcoes" data-toggle="modal" class="btn btn-lg btn-success">
+														<i class="fa">
+															Ativar
+														</i>
+													</a>
+											</c:if>
 											</td>
 	                                    </tr>                                   						
                                 	</c:forEach>
@@ -78,3 +116,4 @@
 
         </div>
         <!-- /#page-wrapper -->
+        <script src="<c:url value="/static/js/cliente/cliente-consultar.js" />" type="text/javascript"></script>

@@ -97,7 +97,7 @@ public class VeiculoController {
 	
 	@ResponseBody
 	@RequestMapping("/listarModelosPorMarca")
-	private List<ModeloVo> listarModelosPorMarca(Integer idMarca) throws Exception{
+	public List<ModeloVo> listarModelosPorMarca(Integer idMarca) throws Exception{
 		return modeloBusiness.listarModelosPorMarca(idMarca);
 	}
 	

@@ -22,7 +22,7 @@ public class ManutencaoVo {
 	private PessoaVo proprietario;
 	private ProfissionalVo mecanico;
 	private List<ServicoVo> listaServicos;
-	private List<ProfissionalVo> listaMecanicos;
+	private List<ProfissionalVo> listaProfissionais;
 	/**
 	 * Responsável por retornar o atributo idManutencao
 	 * @return o idManutencao
@@ -164,18 +164,18 @@ public class ManutencaoVo {
 		this.listaServicos = listaServicos;
 	}
 	/**
-	 * Responsável por retornar o atributo listaMecanicos
-	 * @return o listaMecanicos
+	 * Responsável por retornar o atributo listaProfissionais
+	 * @return o listaProfissionais
 	 */
-	public List<ProfissionalVo> getListaMecanicos() {
-		return listaMecanicos;
+	public List<ProfissionalVo> getListaProfissionais() {
+		return listaProfissionais;
 	}
 	/**
-	 * Responsável por atribuir valor ao atributo listaMecanicos
-	 * @param listaMecanicos para o atributo listaMecanicos
+	 * Responsável por atribuir valor ao atributo listaProfissionais
+	 * @param listaProfissionais para o atributo listaProfissionais
 	 */
-	public void setListaMecanicos(List<ProfissionalVo> listaMecanicos) {
-		this.listaMecanicos = listaMecanicos;
+	public void setListaProfissionais(List<ProfissionalVo> listaProfissionais) {
+		this.listaProfissionais = listaProfissionais;
 	}
 	
 }

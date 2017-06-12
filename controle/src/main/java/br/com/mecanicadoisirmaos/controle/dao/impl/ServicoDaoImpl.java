@@ -139,4 +139,13 @@ public class ServicoDaoImpl extends AbstractDao implements ServicoDao, ServicoQu
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Integer consultarQuantidadeServicosCadastrados() throws DataAccessException {
+		StringBuilder sql = new StringBuilder(QUERY_CONSULTAR_QUANTIDADE_SERVICOS);
+		try{
+			return getJdbc().queryForObject(sql.toString(), new MapSqlParameterSource(), Integer.class);
+		}catch(DataAccessException d){
+			throw d;
+		}
+	}
 }

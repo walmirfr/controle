@@ -24,7 +24,7 @@ public class ManutencaoBusinessImpl implements ManutencaoBusiness{
 			manutencaoDao.inserirServicoManutencao(servico, idManutencao);
 		}
 		
-		for(ProfissionalVo profissional : manutencao.getListaMecanicos()){
+		for(ProfissionalVo profissional : manutencao.getListaProfissionais()){
 			manutencaoDao.inserirProfissionalManutencao(profissional, idManutencao);
 		}
 		return true;
@@ -32,6 +32,10 @@ public class ManutencaoBusinessImpl implements ManutencaoBusiness{
 
 	public List<ManutencaoVo> listarManutencoes() throws Exception {
 		return manutencaoDao.listarManutencoes();
+	}
+
+	public Integer consultarQuantidadeManutencoesCadastradas() throws Exception {
+		return manutencaoDao.consultarQuantidadeManutencoesCadastradas();
 	}
 
 }

@@ -11,22 +11,8 @@ import java.util.List;
  */
 public class ProfissionalVo extends PessoaFisicaVo{
 
-	private Double salario;
 	private List<ManutencaoVo> listaManutencoes;
-	/**
-	 * Responsável por retornar o atributo salario
-	 * @return o salario
-	 */
-	public Double getSalario() {
-		return salario;
-	}
-	/**
-	 * Responsável por atribuir valor ao atributo salario
-	 * @param salario para o atributo salario
-	 */
-	public void setSalario(Double salario) {
-		this.salario = salario;
-	}
+
 	/**
 	 * Responsável por retornar o atributo listaManutencoes
 	 * @return o listaManutencoes

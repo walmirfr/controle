@@ -107,16 +107,20 @@ public class ServicoController {
 		return new ModelAndView("redirect:consultar");
 	}
 	
-	@RequestMapping("/deletarServico")
-	public ModelAndView deletarServico(ServicoVo servico, HttpServletResponse response, RedirectAttributes redirectAtributes){
+	@RequestMapping("/excluirServico")
+	public ModelAndView excluirServico(Integer id, HttpServletResponse response, RedirectAttributes redirectAtributes){
+		ServicoVo servico = new ServicoVo();
+		servico.setIdServico(id);
 		servicoBusiness.deletarServico(servico);
 		redirectAtributes.addFlashAttribute("sucesso", "Serviço removido com sucesso!");
 		return new ModelAndView("redirect:consultar");
 	}
 	
 	@RequestMapping("/ativarDesativarServico")
-	public ModelAndView ativarDesativarServico(ServicoVo servico, String funcao, RedirectAttributes redirectAtributes){
+	public ModelAndView ativarDesativarServico(Integer id, String funcao, RedirectAttributes redirectAtributes){
 		try{
+			ServicoVo servico = new ServicoVo();
+			servico.setIdServico(id);
 			if(servicoBusiness.ativarDesativarServico(servico, funcao)){
 				redirectAtributes.addFlashAttribute("sucesso", "Sucesso ao " + funcao + " o Serviço" );				
 			}else{

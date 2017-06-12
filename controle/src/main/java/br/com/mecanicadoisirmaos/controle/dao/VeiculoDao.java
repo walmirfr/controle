@@ -11,4 +11,8 @@ public interface VeiculoDao {
 	public Integer inserirVeiculo(VeiculoVo veiculo) throws DataAccessException;
 	
 	public List<VeiculoVo> listarVeiculos() throws DataAccessException;
+
+	public Integer consultarQuantidadeVeiculosCadastrados() throws DataAccessException;
+
+	public List<VeiculoVo> consultarVeiculoPorProprietario(Integer idPessoa) throws DataAccessException;
 }

@@ -47,8 +47,43 @@
 	<div id="wrapper">
 		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="main" />
+		
+		<div class="modal fade" id="modalAcoes" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header header-danger">
+				<h2 class="modal-title" id="tituloModalAcoes"><span></span>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</h2>
+			  </div>
+				<form action="#" method="post" id="formAcoes">
+					<input type="hidden" name="id" id="idAcao"/>
+					<input type="hidden" name="funcao" id="idFuncaoAcao"/>
+					<div class="modal-body center">
+						<h3>
+					        <p id="textoAcao"></p>
+					        <p id="textoAcao2"></p>
+						</h3>
+				    </div>
+				  <div class="modal-footer">
+					<button id="btAcao" type="submit" class="btn">Sim</button>
+					<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Não</button>
+				  </div>
+				</form>
+			</div>
+		  </div>
+		</div>
 	</div>
 	<!-- /#wrapper -->
+	
+	<c:if test="${funcao == 'Visualizar'}">
+		<script type="text/javascript">
+			$('input, select').prop('disabled', 'disabled');
+			$('.visu').hide();
+		</script>
+	</c:if>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="<c:url value="/static/js/comum/bootstrap.min.js" />"

@@ -92,3 +92,21 @@
        </div>
        <!-- /.navbar-collapse -->
 </nav>
+
+
+<c:if test="${sucesso != null}">
+		<div class="alert alert-info center msg" style="margin-bottom: 0px" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span> ${sucesso}</span>
+		</div>
+</c:if>
+<c:if test="${erro != null}">
+		<div class="alert alert-danger center" style="margin-bottom: 0px" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<span> ${erro}</span>
+		</div>
+</c:if>

@@ -52,4 +52,10 @@ public interface ServicoQueries {
 			.append("ATIVO = :funcao ")
 			.append("WHERE ID_SERVICO = :idServico ")
 			.toString();
+	
+	public static final String QUERY_CONSULTAR_QUANTIDADE_SERVICOS = new StringBuilder()
+			.append("SELECT COUNT(*) AS QNT ")
+			.append("FROM SERVICO ")
+			.append("WHERE ATIVO = 'S' ")
+			.toString();
 }

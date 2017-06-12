@@ -30,4 +30,9 @@ public interface ManutencaoQueries {
 			.append("INNER JOIN MODELO MO ON MO.ID_MODELO = V.ID_MODELO ")
 			.append("INNER JOIN PESSOA_FISICA PF ON PF.ID_PESSOA = M.ID_PESSOA ")
 			.toString();
+	
+	public static final String QUERY_CONSULTAR_QUANTIDADE_MANUTENCOES = new StringBuilder()
+			.append("SELECT COUNT(*) AS QNT ")
+			.append("FROM MANUTENCAO ")
+			.toString();
 }

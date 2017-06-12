@@ -12,6 +12,11 @@ public class ModeloVo {
 	private Integer idModelo;
 	private String nome;
 	private MarcaVo marca;
+	
+	public ModeloVo() {
+		marca = new MarcaVo();
+	}
+	
 	/**
 	 * Responsável por retornar o atributo idModelo
 	 * @return o idModelo

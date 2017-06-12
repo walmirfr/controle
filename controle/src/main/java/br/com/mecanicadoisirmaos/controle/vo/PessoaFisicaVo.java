@@ -13,8 +13,13 @@ public class PessoaFisicaVo extends PessoaVo{
 
 	private String nome;
 	private String cpf;
+	private String sexo;
 	private Date dtNascimento;
+	private String nascimento;
 	private String tipoPessoaFisica;
+	private Double salario;
+	private EmpresaVo empresa;
+	
 	/**
 	 * Responsável por retornar o atributo nome
 	 * @return o nome
@@ -70,6 +75,62 @@ public class PessoaFisicaVo extends PessoaVo{
 	 */
 	public void setTipoPessoaFisica(String tipoPessoaFisica) {
 		this.tipoPessoaFisica = tipoPessoaFisica;
+	}
+	/**
+	 * Responsável por retornar o atributo sexo
+	 * @return o sexo
+	 */
+	public String getSexo() {
+		return sexo;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo sexo
+	 * @param sexo para o atributo sexo
+	 */
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	/**
+	 * Responsável por retornar o atributo nascimento
+	 * @return o nascimento
+	 */
+	public String getNascimento() {
+		return nascimento;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo nascimento
+	 * @param nascimento para o atributo nascimento
+	 */
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
+	}
+	/**
+	 * Responsável por retornar o atributo salario
+	 * @return o salario
+	 */
+	public Double getSalario() {
+		return salario;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo salario
+	 * @param salario para o atributo salario
+	 */
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+	/**
+	 * Responsável por retornar o atributo empresa
+	 * @return o empresa
+	 */
+	public EmpresaVo getEmpresa() {
+		return empresa;
+	}
+	/**
+	 * Responsável por atribuir valor ao atributo empresa
+	 * @param empresa para o atributo empresa
+	 */
+	public void setEmpresa(EmpresaVo empresa) {
+		this.empresa = empresa;
 	}
 	
 }

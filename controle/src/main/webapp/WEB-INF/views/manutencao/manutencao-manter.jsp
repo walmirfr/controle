@@ -24,15 +24,9 @@
 							<label class="radio-inline col-xs-1">
 								<input type="radio" id="optionsRadiosInline2" value="option2">Empresa
 							</label>
-							<label for="example-text-input" class="col-xs-2 col-form-label">Filtro Proprietário</label>
-							<div class="col-xs-3">
-								<input class="form-control" type="text" placeholder="Filtro por Nome"/>
-							</div>
-						</div>
-						<div class="form-group row">
 							<label for="example-text-input" class="col-xs-1 col-form-label">Proprietário</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="proprietario.idPessoa" >
+								<select class="form-control" id="proprietario" name="proprietario.idPessoa" >
 									<option value="#">Selecione um Proprietário</option>
 									<c:forEach items="${listaProprietarios}" var="proprietario">
 										<option value="${proprietario.idPessoa }">${proprietario.nome }</option>									
@@ -41,31 +35,24 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="example-text-input" class="col-xs-1 col-form-label">Placa</label>
+							<label for="example-text-input" class="col-xs-1 col-form-label">Veículo</label>
 							<div class="col-xs-3">
-								<input class="form-control" name="veiculo.placa" type="text" placeholder="Placa"/>
+								<select id="selectVeiculo" name="veiculo.idVeiculo" class="form-control bloq">
+									<option value="#">Selecione um Veículo</option>
+									<c:if test="${listaVeiculos != null && listaVeiculos.size() > 0 }">
+										<c:forEach items="${listaVeiculos}" var="veiculo">
+											<option value="${marca.idVeiculo }">${veiculo.placa}</option>
+										</c:forEach>
+									</c:if>
+								</select>
 							</div>
 							<label for="example-text-input" class="col-xs-1 col-form-label">Marca</label>
 							<div class="col-xs-3">
-								<select id="selectMarca" class="form-control">
-									<option value="#">Selecione uma Marca</option>
-									<c:if test="${listaMarcas != null && listaMarcas.size() > 0 }">
-										<c:forEach items="${listaMarcas}" var="marca">
-											<option value="${marca.idMarca }">${marca.nome}</option>
-										</c:forEach>
-									</c:if>
-								</select>
+								<input type="text" class="form-control" id="marca" disabled="disabled">
 							</div>
-							<label for="example-text-input" class="col-xs-1 col-form-label">Modelo</label>
+							<label for="example-text-input" class="col-xs-1 col-form-label" >Modelo</label>
 							<div class="col-xs-3">
-								<select class="form-control" id="selectModelo">
-									<option value="#">Selecione um Modelo</option>
-									<c:if test="${listaModelos != null && listaModelos.size() > 0 }">
-										<c:forEach items="${listaModelos}" var="modelo">
-											<option value="${modelo.idModelo }">${modelo.nome}</option>
-										</c:forEach>
-									</c:if>
-								</select>
+								<input type="text" class="form-control" id="modelo" disabled="disabled">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -102,7 +89,7 @@
 						<div class="form-group row">
 							<label for="example-text-input" class="col-xs-1 col-form-label">Grupo Serviço</label>
 							<div class="col-xs-3">
-								<select id="selectgrupoServico" class="form-control">
+								<select id="selectGrupoServico" class="form-control">
 									<option value="#">Selecione um Grupo</option>
 									<c:forEach items="${listaGrupos}" var="grupoServico">
 										<c:if test="${grupoServico.idGrupoServico == servicoVo.grupoServico.idGrupoServico}">
@@ -116,7 +103,7 @@
 							</div>
 							<label for="example-text-input" class="col-xs-1 col-form-label">Serviço</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="listaServicos[0].idServico">
+								<select id="selectServico" class="form-control">
 									<option value="#">Selecione um Serviço</option>
 									<c:forEach items="${listaServicos}" var="servico">
 										<option value="${servico.idServico}">${servico.nome }</option>
@@ -124,31 +111,33 @@
 								</select>
 							</div>
 							<div class="col-xs-2">
-								<input class="btn btn-primary" type="button" value="Adicionar Serviço"/>
+								<input class="btn btn-primary" onclick="adicionarServico()" type="button" value="Adicionar Serviço"/>
 							</div>
 						</div>
 						<h4>Lista de Serviços</h4>
 						<div class="form-group">
-							<table class="table table-bordered table-hover table-striped">
+							<table id="tabelaServicos" class="table table-bordered table-hover table-striped">
+								<input type="hidden" id="controleServico" value="${manutencaoVo.listaServicos.size() + 1}" />
 								<tr>
-									<th style="text-align:center;">Nome do Serviço</th>
-									<th style="text-align:center;">Grupo de Serviço</th>
-									<th style="text-align:center;">Preço</th>
-									<th style="text-align:center;">Remover</th>
+									<th class="center">Nome do Serviço</th>
+									<th class="center">Grupo de Serviço</th>
+									<th class="center">Preço</th>
+									<th class="center">Remover</th>
 								</tr>
-								<tr>
-									<td style="text-align:center;">Amortecedor</td>
-									<td style="text-align:center;">Suspenção</td>
-									<td style="text-align:center;"><input value="50" name="listaServicos[0].preco" placeholder="Preço"/></td>
-									<td style="text-align:center;"><input class="btn btn-danger" type="button" value="Remover"/></td>
-								</tr>
+								<c:if test="${manutencaoVo.listaServicos == null || manutencaoVo.listaServicos.size() == 0}">
+									<tr align="center" id="msgServicos">
+										<td colspan="4">
+											<h4>Nenhum Serviço Adicionado!</h4>
+										</td>
+									</tr>
+								</c:if>
 							</table>
 						</div>
 						<h4>Profissionais</h4>
 						<div class="form-group row">
 							<label for="example-text-input" class="col-xs-1 col-form-label">Profissional</label>
 							<div class="col-xs-3">
-								<select class="form-control" name="listaMecanicos[0].idPessoa">
+								<select class="form-control" id="selectProfissional">
 									<option value="#">Selecione um Profissional</option>
 									<c:forEach items="${listaProfissionais}" var="profissional">
 										<option value="${profissional.idPessoa}">${profissional.nome}</option>
@@ -156,20 +145,24 @@
 								</select>
 							</div>
 							<div class="col-xs-2">
-								<input class="btn btn-primary" type="button" value="Adicionar Profissional"/>
+								<input class="btn btn-primary" onclick="adicionarProfissional()" type="button" value="Adicionar Profissional"/>
 							</div>
 						</div>
 						<h4>Lista de Profissionais</h4>
 						<div class="form-group">
-							<table class="table table-bordered table-hover table-striped">
+							<table id="tabelaProfissional" class="table table-bordered table-hover table-striped">
+								<input type="hidden" id="controleProfissional" value="${manutencaoVo.listaProfissionais.size() + 1}" />
 								<tr>
-									<th style="text-align:center;">Nome</th>
-									<th style="text-align:center;">Remover</th>
+									<th class="center">Nome</th>
+									<th class="center">Remover</th>
 								</tr>
-								<tr>
-									<td style="text-align:center;">Fulano</td>
-									<td style="text-align:center;"><input class="btn btn-danger" type="button" value="Remover"/></td>
-								</tr>
+								<c:if test="${manutencaoVo.listaProfissionais == null || manutencaoVo.listaProfissionais.size() == 0}">
+									<tr align="center" id="msgProfissional">
+										<td colspan="2">
+											<h4>Nenhum Profissional Adicionado!</h4>
+										</td>
+									</tr>
+								</c:if>
 							</table>
 						</div>
 						<div class="form-group text-right">
@@ -184,3 +177,5 @@
             <!-- /.container-fluid -->
 			</form>
         </div>
+
+        <script src="<c:url value="/static/js/manutencao/manutencao-manter.js" />" type="text/javascript"></script>

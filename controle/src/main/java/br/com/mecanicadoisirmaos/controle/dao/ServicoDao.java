@@ -29,4 +29,6 @@ public interface ServicoDao {
 	public Integer deletarServicoPorId(Integer idServico);
 	
 	public Integer ativarDesativarServico(ServicoVo servico) throws DataAccessException;
+	
+	public Integer consultarQuantidadeServicosCadastrados() throws DataAccessException;
 }
